@@ -1,0 +1,3161 @@
+  [1m[35m (73.1ms)[0m  [1m[35mCREATE DATABASE "music_app_development" ENCODING = 'unicode'[0m
+  [1m[35m (38.6ms)[0m  [1m[35mCREATE DATABASE "music_app_test" ENCODING = 'unicode'[0m
+  [1m[35m (5.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4505726345591715405)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20230613174327)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying NOT NULL, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE INDEX "index_users_on_session_token" ON "users" ("session_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230613174327"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-06-13 17:47:31.396973"], ["updated_at", "2023-06-13 17:47:31.396973"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(4505726345591715405)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2023-06-13 14:47:39 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/user/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/user/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.9ms | Allocations: 529)
+Completed 200 OK in 6ms (Views: 2.3ms | ActiveRecord: 0.0ms | Allocations: 4578)
+
+
+Started GET "/users" for ::1 at 2023-06-13 14:47:46 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+Started GET "/users" for ::1 at 2023-06-13 14:47:47 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+Started GET "/users/new" for ::1 at 2023-06-13 14:48:10 -0400
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 96)
+  Rendered layout layouts/application.html.erb (Duration: 32.5ms | Allocations: 6563)
+Completed 200 OK in 35ms (Views: 34.6ms | ActiveRecord: 0.0ms | Allocations: 7262)
+
+
+Started GET "/users/new" for ::1 at 2023-06-13 14:48:49 -0400
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 7.0ms | Allocations: 1595)
+  Rendered layout layouts/application.html.erb (Duration: 7.4ms | Allocations: 1693)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms | Allocations: 2290)
+
+
+
+NoMethodError - undefined method `email' for nil:NilClass:
+  app/views/users/new.html.erb:4
+
+Started POST "/__better_errors/a42af667e9c75500/variables" for ::1 at 2023-06-13 14:48:50 -0400
+Started GET "/users/new" for ::1 at 2023-06-13 14:48:50 -0400
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 1.2ms | Allocations: 680)
+  Rendered layout layouts/application.html.erb (Duration: 1.4ms | Allocations: 761)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1004)
+
+
+
+NoMethodError - undefined method `email' for nil:NilClass:
+  app/views/users/new.html.erb:4
+
+Started POST "/__better_errors/7b92bdbaa8ba99cc/variables" for ::1 at 2023-06-13 14:48:50 -0400
+Started GET "/users/new" for ::1 at 2023-06-13 14:49:19 -0400
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 2.3ms | Allocations: 836)
+  Rendered layout layouts/application.html.erb (Duration: 2.6ms | Allocations: 924)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms | Allocations: 1486)
+
+
+
+NoMethodError - undefined method `email' for nil:NilClass:
+  app/views/users/new.html.erb:4
+
+Started POST "/__better_errors/9a1d1ee478fe7de7/variables" for ::1 at 2023-06-13 14:49:19 -0400
+Started GET "/users/new" for ::1 at 2023-06-13 14:49:20 -0400
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 1.5ms | Allocations: 659)
+  Rendered layout layouts/application.html.erb (Duration: 1.7ms | Allocations: 738)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 951)
+
+
+
+NoMethodError - undefined method `email' for nil:NilClass:
+  app/views/users/new.html.erb:4
+
+Started POST "/__better_errors/f4e4df4790616248/variables" for ::1 at 2023-06-13 14:49:20 -0400
+Started GET "/users/new" for ::1 at 2023-06-13 14:49:20 -0400
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 1.2ms | Allocations: 659)
+  Rendered layout layouts/application.html.erb (Duration: 1.5ms | Allocations: 738)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 933)
+
+
+
+NoMethodError - undefined method `email' for nil:NilClass:
+  app/views/users/new.html.erb:4
+
+Started POST "/__better_errors/cb6199e98e0ba5ff/variables" for ::1 at 2023-06-13 14:49:21 -0400
+Started GET "/users/new" for ::1 at 2023-06-13 14:49:21 -0400
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 1.2ms | Allocations: 659)
+  Rendered layout layouts/application.html.erb (Duration: 1.5ms | Allocations: 738)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 932)
+
+
+
+NoMethodError - undefined method `email' for nil:NilClass:
+  app/views/users/new.html.erb:4
+
+Started POST "/__better_errors/11330d9a4a93e288/variables" for ::1 at 2023-06-13 14:49:21 -0400
+Started GET "/users/new" for ::1 at 2023-06-13 14:52:32 -0400
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.5ms | Allocations: 683)
+  Rendered layout layouts/application.html.erb (Duration: 0.6ms | Allocations: 771)
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 1277)
+
+
+
+NoMethodError - undefined method `email' for nil:NilClass:
+  app/views/users/new.html.erb:4
+
+Started POST "/__better_errors/959b196f25e3a0ad/variables" for ::1 at 2023-06-13 14:52:32 -0400
+Started GET "/users/new" for ::1 at 2023-06-13 14:52:32 -0400
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 1.4ms | Allocations: 659)
+  Rendered layout layouts/application.html.erb (Duration: 1.6ms | Allocations: 738)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 947)
+
+
+
+NoMethodError - undefined method `email' for nil:NilClass:
+  app/views/users/new.html.erb:4
+
+Started POST "/__better_errors/80c5a56265cf059a/variables" for ::1 at 2023-06-13 14:52:32 -0400
+Started GET "/users/new" for ::1 at 2023-06-13 14:52:33 -0400
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 1.2ms | Allocations: 659)
+  Rendered layout layouts/application.html.erb (Duration: 1.5ms | Allocations: 738)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 933)
+
+
+
+NoMethodError - undefined method `email' for nil:NilClass:
+  app/views/users/new.html.erb:4
+
+Started POST "/__better_errors/d3489ead3016edb2/variables" for ::1 at 2023-06-13 14:52:33 -0400
+Started GET "/users/new" for ::1 at 2023-06-13 14:53:03 -0400
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 2.0ms | Allocations: 839)
+  Rendered layout layouts/application.html.erb (Duration: 2.3ms | Allocations: 927)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms | Allocations: 1488)
+
+
+
+NoMethodError - undefined method `email' for nil:NilClass:
+  app/views/users/new.html.erb:4
+
+Started POST "/__better_errors/20b53139c3a5e531/variables" for ::1 at 2023-06-13 14:53:03 -0400
+Started GET "/users/new" for ::1 at 2023-06-13 14:53:04 -0400
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 1.2ms | Allocations: 659)
+  Rendered layout layouts/application.html.erb (Duration: 1.4ms | Allocations: 738)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 948)
+
+
+
+NoMethodError - undefined method `email' for nil:NilClass:
+  app/views/users/new.html.erb:4
+
+Started POST "/__better_errors/d770d4a5c5b1a072/variables" for ::1 at 2023-06-13 14:53:04 -0400
+Started GET "/users/new" for ::1 at 2023-06-13 14:53:04 -0400
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 1.2ms | Allocations: 659)
+  Rendered layout layouts/application.html.erb (Duration: 1.4ms | Allocations: 738)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 932)
+
+
+
+NoMethodError - undefined method `email' for nil:NilClass:
+  app/views/users/new.html.erb:4
+
+Started POST "/__better_errors/2bf892d9a69d3880/variables" for ::1 at 2023-06-13 14:53:05 -0400
+Started GET "/users/new" for ::1 at 2023-06-13 14:53:41 -0400
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 1.8ms | Allocations: 836)
+  Rendered layout layouts/application.html.erb (Duration: 2.1ms | Allocations: 924)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms | Allocations: 1486)
+
+
+
+NoMethodError - undefined method `email' for nil:NilClass:
+  app/views/users/new.html.erb:4
+
+Started POST "/__better_errors/750b492e02e77d3a/variables" for ::1 at 2023-06-13 14:53:41 -0400
+Started GET "/users/new" for ::1 at 2023-06-13 14:55:28 -0400
+Processing by UsersController#new as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 231)
+
+
+
+SyntaxError - syntax error, unexpected symbol literal, expecting `do' or '{' or '('
+    validates :password_digest, presence:true
+              ^:
+  app/models/user.rb:4:in `'
+  app/controllers/users_controller.rb:4:in `new'
+
+Started POST "/__better_errors/84610e359c3c4e4e/variables" for ::1 at 2023-06-13 14:55:28 -0400
+Started GET "/users/new" for ::1 at 2023-06-13 14:55:29 -0400
+Processing by UsersController#new as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 167)
+
+
+
+SyntaxError - syntax error, unexpected symbol literal, expecting `do' or '{' or '('
+    validates :password_digest, presence:true
+              ^:
+  app/models/user.rb:4:in `'
+  app/controllers/users_controller.rb:4:in `new'
+
+Started POST "/__better_errors/cfdcb3001ed173a8/variables" for ::1 at 2023-06-13 14:55:29 -0400
+Started POST "/__better_errors/cfdcb3001ed173a8/variables" for ::1 at 2023-06-13 14:56:09 -0400
+Started GET "/users/new" for ::1 at 2023-06-13 14:57:28 -0400
+Processing by UsersController#new as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 167)
+
+
+
+SyntaxError - syntax error, unexpected symbol literal, expecting `do' or '{' or '('
+    validates :password_digest, presence:true
+              ^:
+  app/models/user.rb:4:in `'
+  app/controllers/users_controller.rb:4:in `new'
+
+Started POST "/__better_errors/cfdc8ca1bdb727fa/variables" for ::1 at 2023-06-13 14:57:28 -0400
+Started GET "/users/new" for ::1 at 2023-06-13 14:58:41 -0400
+Processing by UsersController#new as HTML
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms | Allocations: 223)
+
+
+
+SyntaxError - syntax error, unexpected backslash, expecting `end':
+  app/models/user.rb:8:in `'
+  app/controllers/users_controller.rb:4:in `new'
+
+Started POST "/__better_errors/3ad0bfc5bb082c0c/variables" for ::1 at 2023-06-13 14:58:41 -0400
+Started GET "/users/new" for ::1 at 2023-06-13 14:58:42 -0400
+Processing by UsersController#new as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 168)
+
+
+
+SyntaxError - syntax error, unexpected backslash, expecting `end':
+  app/models/user.rb:8:in `'
+  app/controllers/users_controller.rb:4:in `new'
+
+Started POST "/__better_errors/2e0adbc2779a53ec/variables" for ::1 at 2023-06-13 14:58:42 -0400
+Started GET "/users/new" for ::1 at 2023-06-13 14:58:50 -0400
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.0ms | Allocations: 22)
+  Rendered layout layouts/application.html.erb (Duration: 1.6ms | Allocations: 1768)
+Completed 200 OK in 16ms (Views: 2.1ms | ActiveRecord: 6.7ms | Allocations: 7775)
+
+
+Started POST "/users/users_url" for ::1 at 2023-06-13 14:59:01 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/users/users_url"):
+  
+Started GET "/users" for ::1 at 2023-06-13 15:00:38 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+Started GET "/users" for ::1 at 2023-06-13 15:00:39 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+Started GET "/users" for ::1 at 2023-06-13 15:00:41 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+Started GET "/users/new" for ::1 at 2023-06-13 15:00:46 -0400
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 1.4ms | Allocations: 686)
+  Rendered layout layouts/application.html.erb (Duration: 5.4ms | Allocations: 1978)
+Completed 200 OK in 9ms (Views: 8.3ms | ActiveRecord: 0.0ms | Allocations: 2746)
+
+
+Started POST "/users" for ::1 at 2023-06-13 15:00:54 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"manel@manel.io", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:28:in `block in generate_unique_session_token'
+  [1m[36mUser Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:28:in `block in generate_unique_session_token'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "manel@manel.io"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:10:in `create'
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:10:in `create'
+  [1m[36mUser Create (1.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "manel@manel.io"], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"], ["created_at", "2023-06-13 19:00:54.753554"], ["updated_at", "2023-06-13 19:00:54.753554"]]
+  ↳ app/controllers/users_controller.rb:10:in `create'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:10:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:38:in `reset_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "manel@manel.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:38:in `reset_session_token'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:38:in `reset_session_token'
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "[FILTERED]"], ["updated_at", "2023-06-13 19:00:54.759389"], ["id", 1]]
+  ↳ app/models/user.rb:38:in `reset_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:38:in `reset_session_token'
+No template found for UsersController#create, rendering head :no_content
+Completed 204 No Content in 295ms (ActiveRecord: 5.2ms | Allocations: 9834)
+
+
+Started POST "/users" for ::1 at 2023-06-13 15:00:58 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"manel@manel.io", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:28:in `block in generate_unique_session_token'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:28:in `block in generate_unique_session_token'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "manel@manel.io"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:10:in `create'
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:10:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:10:in `create'
+Completed 422 Unprocessable Entity in 290ms (ActiveRecord: 0.6ms | Allocations: 4356)
+
+
+
+ActiveRecord::RecordInvalid - Validation failed: Email has already been taken:
+  app/controllers/users_controller.rb:10:in `create'
+
+Started POST "/__better_errors/d576cd162322551c/variables" for ::1 at 2023-06-13 15:00:59 -0400
+Started GET "/users/new" for ::1 at 2023-06-13 15:03:56 -0400
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.5ms | Allocations: 671)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | Allocations: 1967)
+Completed 200 OK in 10ms (Views: 2.2ms | ActiveRecord: 5.0ms | Allocations: 5556)
+
+
+Started POST "/users" for ::1 at 2023-06-13 15:04:03 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"manel@manel.ioo", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:28:in `block in generate_unique_session_token'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:28:in `block in generate_unique_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "manel@manel.ioo"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:10:in `create'
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:10:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "manel@manel.ioo"], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"], ["created_at", "2023-06-13 19:04:03.550970"], ["updated_at", "2023-06-13 19:04:03.550970"]]
+  ↳ app/controllers/users_controller.rb:10:in `create'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:10:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 2.8ms | Allocations: 3261)
+  Rendered layout layouts/application.html.erb (Duration: 2.9ms | Allocations: 3340)
+Completed 500 Internal Server Error in 292ms (ActiveRecord: 1.8ms | Allocations: 8288)
+
+
+
+NameError - undefined local variable or method `user' for #<ActionView::Base:0x0000000000b518>
+Did you mean?  @user:
+  app/views/users/show.html.erb:1
+  app/controllers/users_controller.rb:11:in `create'
+
+Started POST "/__better_errors/b7c69613ab84ed31/variables" for ::1 at 2023-06-13 15:04:03 -0400
+Started GET "/users/new" for ::1 at 2023-06-13 15:04:51 -0400
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 1.7ms | Allocations: 648)
+  Rendered layout layouts/application.html.erb (Duration: 4.9ms | Allocations: 1940)
+Completed 200 OK in 7ms (Views: 7.1ms | ActiveRecord: 0.0ms | Allocations: 2723)
+
+
+Started POST "/users" for ::1 at 2023-06-13 15:04:58 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"manel@manel.ioo", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:28:in `block in generate_unique_session_token'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:28:in `block in generate_unique_session_token'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "manel@manel.ioo"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:10:in `create'
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:10:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:10:in `create'
+Completed 422 Unprocessable Entity in 287ms (ActiveRecord: 0.7ms | Allocations: 4161)
+
+
+
+ActiveRecord::RecordInvalid - Validation failed: Email has already been taken:
+  app/controllers/users_controller.rb:10:in `create'
+
+Started POST "/__better_errors/2d960b261a0fd26e/variables" for ::1 at 2023-06-13 15:04:58 -0400
+Started POST "/users" for ::1 at 2023-06-13 15:05:06 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"manel@manel.iooqqq", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:28:in `block in generate_unique_session_token'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:28:in `block in generate_unique_session_token'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "manel@manel.iooqqq"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:10:in `create'
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:10:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "manel@manel.iooqqq"], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"], ["created_at", "2023-06-13 19:05:07.001933"], ["updated_at", "2023-06-13 19:05:07.001933"]]
+  ↳ app/controllers/users_controller.rb:10:in `create'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:10:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 0.2ms | Allocations: 97)
+  Rendered layout layouts/application.html.erb (Duration: 1.0ms | Allocations: 1045)
+Completed 200 OK in 290ms (Views: 1.3ms | ActiveRecord: 1.3ms | Allocations: 5469)
+
+
+Started GET "/sessions.new" for ::1 at 2023-06-13 15:05:33 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/sessions.new"):
+  
+Started GET "/session/new" for ::1 at 2023-06-13 15:06:25 -0400
+
+SyntaxError - syntax error, unexpected end-of-input, expecting `end':
+  app/controllers/sessions_controller.rb:23:in `'
+
+Started POST "/__better_errors/da80d3c3422c0a60/variables" for ::1 at 2023-06-13 15:06:25 -0400
+Started GET "/session/new" for ::1 at 2023-06-13 15:06:47 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.8ms | Allocations: 1267)
+  Rendered layout layouts/application.html.erb (Duration: 1.9ms | Allocations: 1355)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 1941)
+
+
+
+NoMethodError - undefined method `email' for nil:NilClass:
+  app/views/sessions/new.html.erb:7
+  app/controllers/sessions_controller.rb:14:in `new'
+
+Started POST "/__better_errors/959356a363a39355/variables" for ::1 at 2023-06-13 15:06:47 -0400
+Started GET "/session/new" for ::1 at 2023-06-13 15:07:31 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 4.0ms | Allocations: 1257)
+  Rendered layout layouts/application.html.erb (Duration: 4.3ms | Allocations: 1345)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms | Allocations: 2099)
+
+
+
+NoMethodError - undefined method `email' for nil:NilClass:
+  app/views/sessions/new.html.erb:7
+  app/controllers/sessions_controller.rb:14:in `new'
+
+Started POST "/__better_errors/53686ffcc2be1ebb/variables" for ::1 at 2023-06-13 15:07:31 -0400
+Started GET "/session/new" for ::1 at 2023-06-13 15:07:33 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.6ms | Allocations: 997)
+  Rendered layout layouts/application.html.erb (Duration: 1.9ms | Allocations: 1076)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 1274)
+
+
+
+NoMethodError - undefined method `email' for nil:NilClass:
+  app/views/sessions/new.html.erb:7
+  app/controllers/sessions_controller.rb:14:in `new'
+
+Started POST "/__better_errors/9a809aea86b954db/variables" for ::1 at 2023-06-13 15:07:33 -0400
+Started GET "/session/new" for ::1 at 2023-06-13 15:09:14 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.8ms | Allocations: 1095)
+  Rendered layout layouts/application.html.erb (Duration: 0.9ms | Allocations: 1183)
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 1675)
+
+
+
+NoMethodError - undefined method `email' for nil:NilClass:
+  app/views/sessions/new.html.erb:7
+  app/controllers/sessions_controller.rb:14:in `new'
+
+Started POST "/__better_errors/a17e1d1fdd5fcb69/variables" for ::1 at 2023-06-13 15:09:14 -0400
+Started POST "/__better_errors/a17e1d1fdd5fcb69/variables" for ::1 at 2023-06-13 15:09:23 -0400
+Started GET "/session/new" for ::1 at 2023-06-13 15:10:37 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 3.2ms | Allocations: 1257)
+  Rendered layout layouts/application.html.erb (Duration: 3.5ms | Allocations: 1345)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms | Allocations: 2099)
+
+
+
+NoMethodError - undefined method `email' for nil:NilClass:
+  app/views/sessions/new.html.erb:7
+  app/controllers/sessions_controller.rb:14:in `new'
+
+Started POST "/__better_errors/3314ed88f6ea9762/variables" for ::1 at 2023-06-13 15:10:37 -0400
+Started GET "/session/new" for ::1 at 2023-06-13 15:10:39 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.9ms | Allocations: 997)
+  Rendered layout layouts/application.html.erb (Duration: 2.1ms | Allocations: 1076)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 1274)
+
+
+
+NoMethodError - undefined method `email' for nil:NilClass:
+  app/views/sessions/new.html.erb:7
+  app/controllers/sessions_controller.rb:14:in `new'
+
+Started POST "/__better_errors/6de42eafdee75136/variables" for ::1 at 2023-06-13 15:10:39 -0400
+Started GET "/session/new" for ::1 at 2023-06-13 15:11:17 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 2.3ms | Allocations: 1252)
+  Rendered layout layouts/application.html.erb (Duration: 2.8ms | Allocations: 1340)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms | Allocations: 2073)
+
+
+
+NoMethodError - undefined method `email' for nil:NilClass:
+  app/views/sessions/new.html.erb:7
+  app/controllers/sessions_controller.rb:14:in `new'
+
+Started POST "/__better_errors/55670b33d706598d/variables" for ::1 at 2023-06-13 15:11:18 -0400
+Started GET "/users" for ::1 at 2023-06-13 15:11:31 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+Started GET "/users/new" for ::1 at 2023-06-13 15:11:34 -0400
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 1.6ms | Allocations: 662)
+  Rendered layout layouts/application.html.erb (Duration: 4.9ms | Allocations: 1958)
+Completed 200 OK in 17ms (Views: 7.1ms | ActiveRecord: 3.1ms | Allocations: 5273)
+
+
+Started POST "/users" for ::1 at 2023-06-13 15:11:41 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"manel@manel.iooqqquuu", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:28:in `block in generate_unique_session_token'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:28:in `block in generate_unique_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "manel@manel.iooqqquuu"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:10:in `create'
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:10:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "manel@manel.iooqqquuu"], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"], ["created_at", "2023-06-13 19:11:41.808299"], ["updated_at", "2023-06-13 19:11:41.808299"]]
+  ↳ app/controllers/users_controller.rb:10:in `create'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:10:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 0.2ms | Allocations: 94)
+  Rendered layout layouts/application.html.erb (Duration: 0.9ms | Allocations: 1036)
+Completed 200 OK in 288ms (Views: 1.4ms | ActiveRecord: 1.2ms | Allocations: 5987)
+
+
+Started GET "/session/new" for ::1 at 2023-06-13 15:11:51 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.9ms | Allocations: 1030)
+  Rendered layout layouts/application.html.erb (Duration: 2.1ms | Allocations: 1109)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 1296)
+
+
+
+NoMethodError - undefined method `email' for nil:NilClass:
+  app/views/sessions/new.html.erb:7
+  app/controllers/sessions_controller.rb:14:in `new'
+
+Started GET "/session/new" for ::1 at 2023-06-13 15:11:52 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 2.1ms | Allocations: 1009)
+  Rendered layout layouts/application.html.erb (Duration: 2.4ms | Allocations: 1088)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms | Allocations: 1267)
+
+
+
+NoMethodError - undefined method `email' for nil:NilClass:
+  app/views/sessions/new.html.erb:7
+  app/controllers/sessions_controller.rb:14:in `new'
+
+Started POST "/__better_errors/338dca53177b8178/variables" for ::1 at 2023-06-13 15:11:52 -0400
+Started GET "/session/new" for ::1 at 2023-06-13 15:12:22 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 3.0ms | Allocations: 1268)
+  Rendered layout layouts/application.html.erb (Duration: 3.4ms | Allocations: 1356)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms | Allocations: 2093)
+
+
+
+NoMethodError - undefined method `email' for nil:NilClass:
+  app/views/sessions/new.html.erb:7
+  app/controllers/sessions_controller.rb:14:in `new'
+
+Started POST "/__better_errors/d7e394b6ec49b4c8/variables" for ::1 at 2023-06-13 15:12:22 -0400
+Started GET "/session/new" for ::1 at 2023-06-13 15:12:24 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.7ms | Allocations: 1009)
+  Rendered layout layouts/application.html.erb (Duration: 1.9ms | Allocations: 1088)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 1285)
+
+
+
+NoMethodError - undefined method `email' for nil:NilClass:
+  app/views/sessions/new.html.erb:7
+  app/controllers/sessions_controller.rb:14:in `new'
+
+Started POST "/__better_errors/400241a7ed540a9d/variables" for ::1 at 2023-06-13 15:12:24 -0400
+Started GET "/session/new" for ::1 at 2023-06-13 15:12:56 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.7ms | Allocations: 1009)
+  Rendered layout layouts/application.html.erb (Duration: 2.0ms | Allocations: 1088)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 1268)
+
+
+
+NoMethodError - undefined method `email' for nil:NilClass:
+  app/views/sessions/new.html.erb:7
+  app/controllers/sessions_controller.rb:14:in `new'
+
+Started POST "/__better_errors/5776d57bd90911e1/variables" for ::1 at 2023-06-13 15:12:56 -0400
+Started GET "/session/new" for ::1 at 2023-06-13 15:13:00 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 2.1ms | Allocations: 1009)
+  Rendered layout layouts/application.html.erb (Duration: 2.4ms | Allocations: 1088)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 1268)
+
+
+
+NoMethodError - undefined method `email' for nil:NilClass:
+  app/views/sessions/new.html.erb:7
+  app/controllers/sessions_controller.rb:14:in `new'
+
+Started POST "/__better_errors/ca9879e9cda514d6/variables" for ::1 at 2023-06-13 15:13:00 -0400
+Started GET "/session/new" for ::1 at 2023-06-13 15:14:55 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.8ms | Allocations: 1107)
+  Rendered layout layouts/application.html.erb (Duration: 0.8ms | Allocations: 1195)
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 1688)
+
+
+
+NoMethodError - undefined method `email' for nil:NilClass:
+  app/views/sessions/new.html.erb:7
+  app/controllers/sessions_controller.rb:14:in `new'
+
+Started POST "/__better_errors/cc4fa32c0e00d8c3/variables" for ::1 at 2023-06-13 15:14:56 -0400
+Started GET "/session/new" for ::1 at 2023-06-13 15:15:57 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 2.6ms | Allocations: 1348)
+  Rendered layout layouts/application.html.erb (Duration: 2.9ms | Allocations: 1436)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms | Allocations: 2190)
+
+
+
+NoMethodError - undefined method `email' for nil:NilClass:
+  app/views/sessions/new.html.erb:8
+  app/controllers/sessions_controller.rb:14:in `new'
+
+Started POST "/__better_errors/77949f9f6a630b3d/variables" for ::1 at 2023-06-13 15:15:57 -0400
+Started GET "/session/new" for ::1 at 2023-06-13 15:15:58 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 2.2ms | Allocations: 1041)
+  Rendered layout layouts/application.html.erb (Duration: 2.5ms | Allocations: 1120)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 1318)
+
+
+
+NoMethodError - undefined method `email' for nil:NilClass:
+  app/views/sessions/new.html.erb:8
+  app/controllers/sessions_controller.rb:14:in `new'
+
+Started POST "/__better_errors/6b833b518f3b1bcf/variables" for ::1 at 2023-06-13 15:15:58 -0400
+Started GET "/session/new" for ::1 at 2023-06-13 15:16:31 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 2.0ms | Allocations: 1041)
+  Rendered layout layouts/application.html.erb (Duration: 2.3ms | Allocations: 1120)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 1299)
+
+
+
+NoMethodError - undefined method `email' for nil:NilClass:
+  app/views/sessions/new.html.erb:8
+  app/controllers/sessions_controller.rb:14:in `new'
+
+Started POST "/__better_errors/fb6579fac438bb90/variables" for ::1 at 2023-06-13 15:16:31 -0400
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Started GET "/session/new" for ::1 at 2023-06-13 15:17:58 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 2.2ms | Allocations: 1041)
+  Rendered layout layouts/application.html.erb (Duration: 2.4ms | Allocations: 1120)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 1300)
+
+
+
+NoMethodError - undefined method `email' for nil:NilClass:
+  app/views/sessions/new.html.erb:8
+  app/controllers/sessions_controller.rb:14:in `new'
+
+Started POST "/__better_errors/efd9f743cce4098a/variables" for ::1 at 2023-06-13 15:17:58 -0400
+Started GET "/sessions/new" for ::1 at 2023-06-13 15:18:02 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/sessions/new"):
+  
+Started GET "/session/new" for ::1 at 2023-06-13 15:18:10 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.8ms | Allocations: 1041)
+  Rendered layout layouts/application.html.erb (Duration: 2.1ms | Allocations: 1120)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 1300)
+
+
+
+NoMethodError - undefined method `email' for nil:NilClass:
+  app/views/sessions/new.html.erb:8
+  app/controllers/sessions_controller.rb:14:in `new'
+
+Started GET "/sessions" for ::1 at 2023-06-13 15:18:12 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/sessions"):
+  
+Started GET "/session" for ::1 at 2023-06-13 15:18:17 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/session"):
+  
+Started GET "/session/new" for ::1 at 2023-06-13 15:18:20 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.9ms | Allocations: 1041)
+  Rendered layout layouts/application.html.erb (Duration: 2.2ms | Allocations: 1120)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 1300)
+
+
+
+NoMethodError - undefined method `email' for nil:NilClass:
+  app/views/sessions/new.html.erb:8
+  app/controllers/sessions_controller.rb:14:in `new'
+
+Started GET "/session/new" for ::1 at 2023-06-13 15:18:20 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 3.0ms | Allocations: 1041)
+  Rendered layout layouts/application.html.erb (Duration: 3.3ms | Allocations: 1120)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms | Allocations: 1300)
+
+
+
+NoMethodError - undefined method `email' for nil:NilClass:
+  app/views/sessions/new.html.erb:8
+  app/controllers/sessions_controller.rb:14:in `new'
+
+Started POST "/__better_errors/2b02f9a37e26bc2e/variables" for ::1 at 2023-06-13 15:18:20 -0400
+Started GET "/session/new" for ::1 at 2023-06-13 15:19:19 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 1168)
+  Rendered layout layouts/application.html.erb (Duration: 1.1ms | Allocations: 1256)
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 1767)
+
+
+
+NoMethodError - undefined method `email' for nil:NilClass:
+  app/views/sessions/new.html.erb:8
+
+Started POST "/__better_errors/80010116dc36345b/variables" for ::1 at 2023-06-13 15:19:20 -0400
+Started GET "/session/new" for ::1 at 2023-06-13 15:19:20 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.9ms | Allocations: 1041)
+  Rendered layout layouts/application.html.erb (Duration: 2.1ms | Allocations: 1120)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 1328)
+
+
+
+NoMethodError - undefined method `email' for nil:NilClass:
+  app/views/sessions/new.html.erb:8
+
+Started POST "/__better_errors/4dcafed1a78d02d8/variables" for ::1 at 2023-06-13 15:19:20 -0400
+Started GET "/users" for ::1 at 2023-06-13 15:28:10 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+Started GET "/users/new" for ::1 at 2023-06-13 15:28:12 -0400
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 2.0ms | Allocations: 673)
+  Rendered layout layouts/application.html.erb (Duration: 6.2ms | Allocations: 1969)
+Completed 200 OK in 39ms (Views: 8.0ms | ActiveRecord: 13.9ms | Allocations: 8287)
+
+
+Started POST "/users" for ::1 at 2023-06-13 15:28:18 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"manel@manel.iojjj", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:28:in `block in generate_unique_session_token'
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:28:in `block in generate_unique_session_token'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "manel@manel.iojjj"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:10:in `create'
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:10:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "manel@manel.iojjj"], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"], ["created_at", "2023-06-13 19:28:18.896804"], ["updated_at", "2023-06-13 19:28:18.896804"]]
+  ↳ app/controllers/users_controller.rb:10:in `create'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:10:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 0.4ms | Allocations: 97)
+  Rendered layout layouts/application.html.erb (Duration: 1.2ms | Allocations: 1045)
+Completed 200 OK in 294ms (Views: 1.6ms | ActiveRecord: 2.4ms | Allocations: 6048)
+
+
+Started GET "/session/new" for ::1 at 2023-06-13 15:28:27 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.7ms | Allocations: 1071)
+  Rendered layout layouts/application.html.erb (Duration: 1.9ms | Allocations: 1150)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 1350)
+
+
+
+NoMethodError - undefined method `email' for nil:NilClass:
+  app/views/sessions/new.html.erb:8
+
+Started GET "/session/new" for ::1 at 2023-06-13 15:28:29 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 2.0ms | Allocations: 1050)
+  Rendered layout layouts/application.html.erb (Duration: 2.3ms | Allocations: 1129)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms | Allocations: 1323)
+
+
+
+NoMethodError - undefined method `email' for nil:NilClass:
+  app/views/sessions/new.html.erb:8
+
+Started POST "/__better_errors/58ce8719c7f151de/variables" for ::1 at 2023-06-13 15:28:29 -0400
+Started GET "/session/new" for ::1 at 2023-06-13 15:29:41 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.3ms | Allocations: 509)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | Allocations: 1654)
+Completed 200 OK in 7ms (Views: 1.7ms | ActiveRecord: 3.3ms | Allocations: 4865)
+
+
+Started POST "/session" for ::1 at 2023-06-13 15:30:00 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"manel@manel.io", "password"=>"[FILTERED]"}}
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 0.0ms | Allocations: 2819)
+
+
+
+NoMethodError - undefined method `find_by_credentials' for #<SessionsController:0x0000000000fbb8>
+        @user = find_by_credentials(params[:user][:email],params[:user][:password])
+                ^^^^^^^^^^^^^^^^^^^:
+  app/controllers/sessions_controller.rb:3:in `create'
+
+Started POST "/__better_errors/d5d8f5c526b3e031/variables" for ::1 at 2023-06-13 15:30:00 -0400
+Started POST "/session" for ::1 at 2023-06-13 15:30:43 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"manel@manel.io", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "manel@manel.io"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:17:in `find_by_credentials'
+Completed 500 Internal Server Error in 249ms (ActiveRecord: 2.9ms | Allocations: 4298)
+
+
+
+ArgumentError - wrong number of arguments (given 0, expected 1):
+  app/controllers/application_controller.rb:13:in `login!'
+  app/controllers/sessions_controller.rb:5:in `create'
+
+Started POST "/__better_errors/42fb3eb9cae52188/variables" for ::1 at 2023-06-13 15:30:43 -0400
+Started POST "/session" for ::1 at 2023-06-13 15:31:03 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"manel@manel.io", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "manel@manel.io"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:17:in `find_by_credentials'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:38:in `reset_session_token'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "manel@manel.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:38:in `reset_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:38:in `reset_session_token'
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "[FILTERED]"], ["updated_at", "2023-06-13 19:31:03.596623"], ["id", 1]]
+  ↳ app/models/user.rb:38:in `reset_session_token'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:38:in `reset_session_token'
+Completed 500 Internal Server Error in 262ms (ActiveRecord: 4.7ms | Allocations: 8083)
+
+
+
+ActionController::UrlGenerationError - No route matches {:action=>"show", :controller=>"users"}, missing required keys: [:id]:
+  app/controllers/sessions_controller.rb:6:in `create'
+
+Started POST "/__better_errors/ad803e4a5997f978/variables" for ::1 at 2023-06-13 15:31:03 -0400
+Started POST "/session" for ::1 at 2023-06-13 15:31:38 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"manel@manel.io", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "manel@manel.io"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:17:in `find_by_credentials'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:38:in `reset_session_token'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "manel@manel.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:38:in `reset_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:38:in `reset_session_token'
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "[FILTERED]"], ["updated_at", "2023-06-13 19:31:38.553256"], ["id", 1]]
+  ↳ app/models/user.rb:38:in `reset_session_token'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:38:in `reset_session_token'
+Redirected to http://localhost:3000/session
+Completed 302 Found in 253ms (ActiveRecord: 4.6ms | Allocations: 7920)
+
+
+Started GET "/session" for ::1 at 2023-06-13 15:31:38 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/session"):
+  
+Started GET "/session" for ::1 at 2023-06-13 15:33:02 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/session"):
+  
+Started GET "/session" for ::1 at 2023-06-13 15:33:03 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/session"):
+  
+Started GET "/session" for ::1 at 2023-06-13 15:33:04 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/session"):
+  
+Started GET "/session" for ::1 at 2023-06-13 15:33:05 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/session"):
+  
+Started GET "/session/new" for ::1 at 2023-06-13 15:33:56 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.0ms | Allocations: 491)
+  Rendered layout layouts/application.html.erb (Duration: 3.7ms | Allocations: 1642)
+Completed 200 OK in 17ms (Views: 4.8ms | ActiveRecord: 4.1ms | Allocations: 4891)
+
+
+Started POST "/session" for ::1 at 2023-06-13 15:34:01 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"manel@manel.io", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "manel@manel.io"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:17:in `find_by_credentials'
+Redirected to 
+Completed 500 Internal Server Error in 287ms (ActiveRecord: 0.3ms | Allocations: 5898)
+
+
+
+NoMethodError - undefined method `new_url' for #<SessionsController:0x00000000012ed0>
+            target.public_send get_method_for_string str
+                  ^^^^^^^^^^^^
+Did you mean?  new_user_url:
+  app/controllers/sessions_controller.rb:9:in `create'
+
+Started POST "/__better_errors/36434e62ad2c4dad/variables" for ::1 at 2023-06-13 15:34:01 -0400
+Started POST "/session" for ::1 at 2023-06-13 15:34:22 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"manel@manel.io", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "manel@manel.io"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:17:in `find_by_credentials'
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 774)
+  Rendered layout layouts/application.html.erb (Duration: 0.8ms | Allocations: 862)
+Completed 500 Internal Server Error in 254ms (ActiveRecord: 2.7ms | Allocations: 5328)
+
+
+
+NoMethodError - undefined method `email' for nil:NilClass:
+  app/views/sessions/new.html.erb:8
+  app/controllers/sessions_controller.rb:9:in `create'
+
+Started POST "/__better_errors/7acf11017efcf452/variables" for ::1 at 2023-06-13 15:34:23 -0400
+Started POST "/session" for ::1 at 2023-06-13 15:35:00 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"manel@manel.io", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "manel@manel.io"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:17:in `find_by_credentials'
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.4ms | Allocations: 261)
+  Rendered layout layouts/application.html.erb (Duration: 1.7ms | Allocations: 1540)
+Completed 200 OK in 290ms (Views: 2.8ms | ActiveRecord: 0.3ms | Allocations: 3342)
+
+
+Started POST "/session" for ::1 at 2023-06-13 15:35:07 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"manel@manel.io", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "manel@manel.io"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:17:in `find_by_credentials'
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.2ms | Allocations: 55)
+  Rendered layout layouts/application.html.erb (Duration: 1.1ms | Allocations: 997)
+Completed 200 OK in 285ms (Views: 1.4ms | ActiveRecord: 0.2ms | Allocations: 2236)
+
+
+Started POST "/session" for ::1 at 2023-06-13 15:36:39 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"manel@manel.io", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "manel@manel.io"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:17:in `find_by_credentials'
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.4ms | Allocations: 260)
+  Rendered layout layouts/application.html.erb (Duration: 1.9ms | Allocations: 2274)
+Completed 500 Internal Server Error in 287ms (ActiveRecord: 0.2ms | Allocations: 3894)
+
+
+
+NoMethodError - undefined method `each' for #<ActionDispatch::Flash::FlashNow:0x00000001097eeaa0 @flash=#<ActionDispatch::Flash::FlashHash:0x00000001097eec30 @discard=#<Set: {"errors"}>, @flashes={"errors"=>["Incorrect email/password!"]}, @now=#<ActionDispatch::Flash::FlashNow:0x00000001097eeaa0 ...>>>:
+  app/views/layouts/application.html.erb:14
+  app/controllers/sessions_controller.rb:9:in `create'
+
+Started POST "/__better_errors/58d7f71bd4e8d799/variables" for ::1 at 2023-06-13 15:36:39 -0400
+Started GET "/session/new" for ::1 at 2023-06-13 15:36:59 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 2.7ms | Allocations: 637)
+  Rendered layout layouts/application.html.erb (Duration: 6.1ms | Allocations: 2018)
+Completed 200 OK in 10ms (Views: 8.3ms | ActiveRecord: 0.0ms | Allocations: 2844)
+
+
+Started POST "/session" for ::1 at 2023-06-13 15:37:04 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"manel@manel.io", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "manel@manel.io"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:17:in `find_by_credentials'
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.2ms | Allocations: 55)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | Allocations: 1006)
+Completed 200 OK in 284ms (Views: 1.7ms | ActiveRecord: 0.2ms | Allocations: 2214)
+
+
+Started POST "/session" for ::1 at 2023-06-13 15:37:28 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"knfkvn", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "knfkvn"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:17:in `find_by_credentials'
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.2ms | Allocations: 1733)
+
+
+
+NoMethodError - undefined method `is_password?' for nil:NilClass
+        user.is_password?(password)? user : nil
+            ^^^^^^^^^^^^^:
+  app/models/user.rb:18:in `find_by_credentials'
+  app/controllers/sessions_controller.rb:3:in `create'
+
+Started POST "/__better_errors/a46d410c2c8e73b8/variables" for ::1 at 2023-06-13 15:37:28 -0400
+Started GET "/session/new" for ::1 at 2023-06-13 15:38:02 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 2.7ms | Allocations: 635)
+  Rendered layout layouts/application.html.erb (Duration: 9.8ms | Allocations: 2667)
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.0ms | Allocations: 3432)
+
+
+
+NoMethodError - undefined method `each' for nil:NilClass:
+  app/views/layouts/application.html.erb:14
+
+Started GET "/session/new" for ::1 at 2023-06-13 15:38:02 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.2ms | Allocations: 374)
+  Rendered layout layouts/application.html.erb (Duration: 4.3ms | Allocations: 1975)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms | Allocations: 2206)
+
+
+
+NoMethodError - undefined method `each' for nil:NilClass:
+  app/views/layouts/application.html.erb:14
+
+Started POST "/__better_errors/2ab9be7f2e0749be/variables" for ::1 at 2023-06-13 15:38:02 -0400
+Started GET "/session/new" for ::1 at 2023-06-13 15:38:22 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.5ms | Allocations: 636)
+  Rendered layout layouts/application.html.erb (Duration: 6.5ms | Allocations: 2666)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.0ms | Allocations: 3430)
+
+
+
+NoMethodError - undefined method `each' for nil:NilClass:
+  app/views/layouts/application.html.erb:14
+
+Started POST "/__better_errors/586a730cd5dbacda/variables" for ::1 at 2023-06-13 15:38:22 -0400
+Started GET "/session/new" for ::1 at 2023-06-13 15:38:23 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 374)
+  Rendered layout layouts/application.html.erb (Duration: 4.1ms | Allocations: 1981)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms | Allocations: 2213)
+
+
+
+NoMethodError - undefined method `each' for nil:NilClass:
+  app/views/layouts/application.html.erb:14
+
+Started POST "/__better_errors/c6dc2cfc56d55674/variables" for ::1 at 2023-06-13 15:38:23 -0400
+Started GET "/session/new" for ::1 at 2023-06-13 15:38:33 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 2.1ms | Allocations: 635)
+  Rendered layout layouts/application.html.erb (Duration: 8.6ms | Allocations: 2663)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.0ms | Allocations: 3424)
+
+
+
+NoMethodError - undefined method `each' for nil:NilClass:
+  app/views/layouts/application.html.erb:14
+
+Started POST "/__better_errors/5b8e4623df2c49c0/variables" for ::1 at 2023-06-13 15:38:33 -0400
+Started GET "/session/new" for ::1 at 2023-06-13 15:38:34 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 374)
+  Rendered layout layouts/application.html.erb (Duration: 4.4ms | Allocations: 1974)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms | Allocations: 2205)
+
+
+
+NoMethodError - undefined method `each' for nil:NilClass:
+  app/views/layouts/application.html.erb:14
+
+Started POST "/__better_errors/77a6d11e29edd389/variables" for ::1 at 2023-06-13 15:38:34 -0400
+Started GET "/session/new" for ::1 at 2023-06-13 15:38:35 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.0ms | Allocations: 374)
+  Rendered layout layouts/application.html.erb (Duration: 4.5ms | Allocations: 1974)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms | Allocations: 2182)
+
+
+
+NoMethodError - undefined method `each' for nil:NilClass:
+  app/views/layouts/application.html.erb:14
+
+Started POST "/__better_errors/d78ee4689464c2b8/variables" for ::1 at 2023-06-13 15:38:35 -0400
+Started GET "/session/new" for ::1 at 2023-06-13 15:38:35 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.9ms | Allocations: 374)
+  Rendered layout layouts/application.html.erb (Duration: 5.0ms | Allocations: 1980)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms | Allocations: 2189)
+
+
+
+NoMethodError - undefined method `each' for nil:NilClass:
+  app/views/layouts/application.html.erb:14
+
+Started POST "/__better_errors/70f4e0e947253d7e/variables" for ::1 at 2023-06-13 15:38:35 -0400
+Started GET "/session/new" for ::1 at 2023-06-13 15:38:35 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.0ms | Allocations: 374)
+  Rendered layout layouts/application.html.erb (Duration: 5.4ms | Allocations: 1980)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms | Allocations: 2189)
+
+
+
+NoMethodError - undefined method `each' for nil:NilClass:
+  app/views/layouts/application.html.erb:14
+
+Started POST "/__better_errors/afe2eb3def06ede6/variables" for ::1 at 2023-06-13 15:38:35 -0400
+Started GET "/session/new" for ::1 at 2023-06-13 15:38:35 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.8ms | Allocations: 374)
+  Rendered layout layouts/application.html.erb (Duration: 5.2ms | Allocations: 1974)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms | Allocations: 2182)
+
+
+
+NoMethodError - undefined method `each' for nil:NilClass:
+  app/views/layouts/application.html.erb:14
+
+Started POST "/__better_errors/2e366e2ee05b23e1/variables" for ::1 at 2023-06-13 15:38:35 -0400
+Started GET "/session/new" for ::1 at 2023-06-13 15:38:36 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.1ms | Allocations: 374)
+  Rendered layout layouts/application.html.erb (Duration: 4.7ms | Allocations: 1974)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms | Allocations: 2182)
+
+
+
+NoMethodError - undefined method `each' for nil:NilClass:
+  app/views/layouts/application.html.erb:14
+
+Started POST "/__better_errors/b31bdc68b38ab236/variables" for ::1 at 2023-06-13 15:38:36 -0400
+Started GET "/session/new" for ::1 at 2023-06-13 15:38:47 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.5ms | Allocations: 640)
+  Rendered layout layouts/application.html.erb (Duration: 5.9ms | Allocations: 2663)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.0ms | Allocations: 3427)
+
+
+
+NoMethodError - undefined method `each' for #<ActionDispatch::Flash::FlashNow:0x000000010925e1a8 @flash=#<ActionDispatch::Flash::FlashHash:0x000000010925e3b0 @discard=#<Set: {}>, @flashes={}, @now=#<ActionDispatch::Flash::FlashNow:0x000000010925e1a8 ...>>>:
+  app/views/layouts/application.html.erb:14
+
+Started POST "/__better_errors/3acc84620db5ccd4/variables" for ::1 at 2023-06-13 15:38:47 -0400
+Started GET "/session/new" for ::1 at 2023-06-13 15:38:47 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.8ms | Allocations: 374)
+  Rendered layout layouts/application.html.erb (Duration: 4.3ms | Allocations: 1972)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms | Allocations: 2204)
+
+
+
+NoMethodError - undefined method `each' for #<ActionDispatch::Flash::FlashNow:0x00000001094278e0 @flash=#<ActionDispatch::Flash::FlashHash:0x0000000109427a70 @discard=#<Set: {}>, @flashes={}, @now=#<ActionDispatch::Flash::FlashNow:0x00000001094278e0 ...>>>:
+  app/views/layouts/application.html.erb:14
+
+Started POST "/__better_errors/a51a5521593f8ad1/variables" for ::1 at 2023-06-13 15:38:47 -0400
+Started GET "/session/new" for ::1 at 2023-06-13 15:40:24 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 2.9ms | Allocations: 635)
+  Rendered layout layouts/application.html.erb (Duration: 7.6ms | Allocations: 2028)
+Completed 200 OK in 11ms (Views: 10.0ms | ActiveRecord: 0.0ms | Allocations: 2820)
+
+
+Started POST "/session" for ::1 at 2023-06-13 15:40:30 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"kjhkjhn", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "kjhkjhn"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:17:in `find_by_credentials'
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.2ms | Allocations: 1816)
+
+
+
+NoMethodError - undefined method `is_password?' for nil:NilClass
+        user.is_password?(password)? user : nil
+            ^^^^^^^^^^^^^:
+  app/models/user.rb:18:in `find_by_credentials'
+  app/controllers/sessions_controller.rb:3:in `create'
+
+Started POST "/__better_errors/dd158c5e1a30a53c/variables" for ::1 at 2023-06-13 15:40:30 -0400
+Started POST "/session" for ::1 at 2023-06-13 15:42:23 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"kjhkjhn", "password"=>"[FILTERED]"}}
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 1.0ms | Allocations: 2371)
+
+
+
+ActiveRecord::StatementInvalid - PG::UndefinedColumn: ERROR:  column users.username does not exist
+LINE 1: SELECT "users".* FROM "users" WHERE "users"."username" = $1 ...
+                                            ^:
+  app/models/user.rb:17:in `find_by_credentials'
+  app/controllers/sessions_controller.rb:3:in `create'
+
+Started POST "/__better_errors/1f93f9b3e6c56a6f/variables" for ::1 at 2023-06-13 15:42:23 -0400
+Started GET "/session/new" for ::1 at 2023-06-13 15:42:44 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.3ms | Allocations: 494)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | Allocations: 1666)
+Completed 200 OK in 8ms (Views: 1.7ms | ActiveRecord: 4.1ms | Allocations: 4924)
+
+
+Started POST "/session" for ::1 at 2023-06-13 15:42:49 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"manel@manel.io", "password"=>"[FILTERED]"}}
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.0ms | Allocations: 5002)
+
+
+
+NameError - undefined local variable or method `email' for User:Class:
+  app/models/user.rb:17:in `find_by_credentials'
+  app/controllers/sessions_controller.rb:3:in `create'
+
+Started POST "/__better_errors/9fda33c9181e25f3/variables" for ::1 at 2023-06-13 15:42:49 -0400
+Started POST "/session" for ::1 at 2023-06-13 15:43:14 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"manel@manel.io", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "manel@manel.io"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:17:in `find_by_credentials'
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.3ms | Allocations: 101)
+  Rendered layout layouts/application.html.erb (Duration: 1.2ms | Allocations: 1245)
+Completed 200 OK in 250ms (Views: 1.9ms | ActiveRecord: 3.0ms | Allocations: 5736)
+
+
+Started POST "/session" for ::1 at 2023-06-13 15:46:43 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"manel@manel.io", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "manel@manel.io"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:17:in `find_by_credentials'
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.0ms | Allocations: 263)
+  Rendered layout layouts/application.html.erb (Duration: 7.2ms | Allocations: 4633)
+Completed 500 Internal Server Error in 289ms (ActiveRecord: 0.3ms | Allocations: 6407)
+
+
+
+NoMethodError - undefined method `logged_in?' for #<ActionView::Base:0x00000000016760>
+Did you mean?  logged_in:
+  app/views/layouts/application.html.erb:14
+  app/controllers/sessions_controller.rb:9:in `create'
+
+Started POST "/__better_errors/cb76429258959ce0/variables" for ::1 at 2023-06-13 15:46:43 -0400
+Started POST "/session" for ::1 at 2023-06-13 15:47:30 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"manel@manel.io", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "manel@manel.io"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:17:in `find_by_credentials'
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.3ms | Allocations: 101)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 8.3ms | Allocations: 6883)
+Completed 500 Internal Server Error in 257ms (ActiveRecord: 3.1ms | Allocations: 11342)
+
+
+
+NoMethodError - undefined method `username' for #<User id: 1, email: "manel@manel.io", password_digest: [FILTERED], session_token: [FILTERED], created_at: "2023-06-13 19:00:54.753554000 +0000", updated_at: "2023-06-13 19:31:38.553256000 +0000">:
+  app/views/layouts/application.html.erb:15
+  app/controllers/sessions_controller.rb:9:in `create'
+
+Started POST "/__better_errors/2fd01057f55c9073/variables" for ::1 at 2023-06-13 15:47:31 -0400
+Started GET "/session" for ::1 at 2023-06-13 15:48:37 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/session"):
+  
+Started GET "/session/new" for ::1 at 2023-06-13 15:48:42 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.4ms | Allocations: 638)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 8.4ms | Allocations: 3308)
+Completed 200 OK in 12ms (Views: 9.6ms | ActiveRecord: 0.3ms | Allocations: 4087)
+
+
+Started DELETE "/session" for ::1 at 2023-06-13 16:00:45 -0400
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:46:in `reset_session_token'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "manel@manel.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:46:in `reset_session_token'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:46:in `reset_session_token'
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "[FILTERED]"], ["updated_at", "2023-06-13 20:00:45.467823"], ["id", 1]]
+  ↳ app/models/user.rb:46:in `reset_session_token'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:46:in `reset_session_token'
+Redirected to http://localhost:3000/session/new
+Completed 302 Found in 17ms (ActiveRecord: 3.0ms | Allocations: 4773)
+
+
+Started GET "/session/new" for ::1 at 2023-06-13 16:00:45 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.6ms | Allocations: 385)
+  Rendered layout layouts/application.html.erb (Duration: 2.4ms | Allocations: 1403)
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.0ms | Allocations: 1655)
+
+
+Started GET "/users/new" for ::1 at 2023-06-13 16:00:54 -0400
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 1.8ms | Allocations: 645)
+  Rendered layout layouts/application.html.erb (Duration: 5.0ms | Allocations: 1865)
+Completed 200 OK in 7ms (Views: 6.6ms | ActiveRecord: 0.0ms | Allocations: 2499)
+
+
+Started GET "/users/new" for ::1 at 2023-06-13 16:00:57 -0400
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.8ms | Allocations: 376)
+  Rendered layout layouts/application.html.erb (Duration: 4.2ms | Allocations: 1389)
+Completed 200 OK in 5ms (Views: 4.9ms | ActiveRecord: 0.0ms | Allocations: 1634)
+
+
+Started GET "/session/new" for ::1 at 2023-06-13 16:00:58 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.9ms | Allocations: 370)
+  Rendered layout layouts/application.html.erb (Duration: 3.0ms | Allocations: 1389)
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.0ms | Allocations: 1625)
+
+
+Started GET "/users/new" for ::1 at 2023-06-13 16:01:02 -0400
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.9ms | Allocations: 364)
+  Rendered layout layouts/application.html.erb (Duration: 3.2ms | Allocations: 1377)
+Completed 200 OK in 4ms (Views: 3.9ms | ActiveRecord: 0.0ms | Allocations: 1596)
+
+
+Started GET "/session/new" for ::1 at 2023-06-13 16:01:03 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 376)
+  Rendered layout layouts/application.html.erb (Duration: 3.5ms | Allocations: 1389)
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.0ms | Allocations: 1622)
+
+
+Started GET "/users/new" for ::1 at 2023-06-13 16:01:04 -0400
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.8ms | Allocations: 379)
+  Rendered layout layouts/application.html.erb (Duration: 3.5ms | Allocations: 1392)
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.0ms | Allocations: 1611)
+
+
+Started POST "/users" for ::1 at 2023-06-13 16:01:17 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"Manel@manel.com", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:36:in `block in generate_unique_session_token'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:36:in `block in generate_unique_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "Manel@manel.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:10:in `create'
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:10:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "Manel@manel.com"], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"], ["created_at", "2023-06-13 20:01:18.001591"], ["updated_at", "2023-06-13 20:01:18.001591"]]
+  ↳ app/controllers/users_controller.rb:10:in `create'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:10:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 0.6ms | Allocations: 94)
+  Rendered layout layouts/application.html.erb (Duration: 1.4ms | Allocations: 1104)
+Completed 200 OK in 288ms (Views: 1.8ms | ActiveRecord: 1.3ms | Allocations: 5713)
+
+
+Started GET "/session/new" for ::1 at 2023-06-13 16:01:28 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 373)
+  Rendered layout layouts/application.html.erb (Duration: 3.0ms | Allocations: 1386)
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.0ms | Allocations: 1619)
+
+
+Started POST "/session" for ::1 at 2023-06-13 16:01:44 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"manel@manel.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "manel@manel.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:17:in `find_by_credentials'
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.3ms | Allocations: 55)
+  Rendered layout layouts/application.html.erb (Duration: 3.7ms | Allocations: 1054)
+Completed 200 OK in 7ms (Views: 4.6ms | ActiveRecord: 0.2ms | Allocations: 2118)
+
+
+Started POST "/session" for ::1 at 2023-06-13 16:02:04 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"manel@manel.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "manel@manel.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:17:in `find_by_credentials'
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.3ms | Allocations: 55)
+  Rendered layout layouts/application.html.erb (Duration: 2.8ms | Allocations: 1054)
+Completed 200 OK in 6ms (Views: 3.4ms | ActiveRecord: 0.2ms | Allocations: 2105)
+
+
+Started GET "/users/new" for ::1 at 2023-06-13 16:02:07 -0400
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 364)
+  Rendered layout layouts/application.html.erb (Duration: 3.0ms | Allocations: 1377)
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.0ms | Allocations: 1596)
+
+
+Started POST "/users" for ::1 at 2023-06-13 16:02:22 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"manel@manel.ii", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:36:in `block in generate_unique_session_token'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:36:in `block in generate_unique_session_token'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "manel@manel.ii"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:10:in `create'
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:10:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "manel@manel.ii"], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"], ["created_at", "2023-06-13 20:02:22.503914"], ["updated_at", "2023-06-13 20:02:22.503914"]]
+  ↳ app/controllers/users_controller.rb:10:in `create'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:10:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 0.0ms | Allocations: 9)
+  Rendered layout layouts/application.html.erb (Duration: 1.0ms | Allocations: 1017)
+Completed 200 OK in 287ms (Views: 1.2ms | ActiveRecord: 1.4ms | Allocations: 5304)
+
+
+Started GET "/session/new" for ::1 at 2023-06-13 16:02:47 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 370)
+  Rendered layout layouts/application.html.erb (Duration: 3.0ms | Allocations: 1383)
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.0ms | Allocations: 1616)
+
+
+Started POST "/session" for ::1 at 2023-06-13 16:02:52 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"manel@manel.ii", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "manel@manel.ii"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:17:in `find_by_credentials'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:46:in `reset_session_token'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "manel@manel.ii"], ["id", 7], ["LIMIT", 1]]
+  ↳ app/models/user.rb:46:in `reset_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 7], ["LIMIT", 1]]
+  ↳ app/models/user.rb:46:in `reset_session_token'
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "[FILTERED]"], ["updated_at", "2023-06-13 20:02:53.043064"], ["id", 7]]
+  ↳ app/models/user.rb:46:in `reset_session_token'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:46:in `reset_session_token'
+Redirected to http://localhost:3000/users/7
+Completed 302 Found in 288ms (ActiveRecord: 1.6ms | Allocations: 4400)
+
+
+Started GET "/users/7" for ::1 at 2023-06-13 16:02:53 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"7"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 0.6ms | Allocations: 680)
+  Rendered layout layouts/application.html.erb (Duration: 0.6ms | Allocations: 759)
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 968)
+
+
+
+NoMethodError - undefined method `email' for nil:NilClass:
+  app/views/users/show.html.erb:1
+
+Started POST "/__better_errors/b7a3f5aaafc1ec4a/variables" for ::1 at 2023-06-13 16:02:53 -0400
+Started GET "/users/7" for ::1 at 2023-06-13 16:07:42 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"7"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 1.6ms | Allocations: 659)
+  Rendered layout layouts/application.html.erb (Duration: 1.8ms | Allocations: 738)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 932)
+
+
+
+NoMethodError - undefined method `email' for nil:NilClass:
+  app/views/users/show.html.erb:1
+
+Started POST "/__better_errors/345a336fcd39ed16/variables" for ::1 at 2023-06-13 16:07:42 -0400
+Started GET "/users/7" for ::1 at 2023-06-13 16:11:02 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"7"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 1.6ms | Allocations: 659)
+  Rendered layout layouts/application.html.erb (Duration: 1.9ms | Allocations: 738)
+Completed 500 Internal Server Error in 2ms (Allocations: 931)
+
+
+
+NoMethodError - undefined method `email' for nil:NilClass:
+  app/views/users/show.html.erb:1
+
+Started POST "/__better_errors/b2baebfcd2b1694a/variables" for ::1 at 2023-06-13 16:11:02 -0400
+Started GET "/users/7" for ::1 at 2023-06-13 16:11:02 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"7"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 1.3ms | Allocations: 659)
+  Rendered layout layouts/application.html.erb (Duration: 1.5ms | Allocations: 738)
+Completed 500 Internal Server Error in 2ms (Allocations: 930)
+
+
+
+NoMethodError - undefined method `email' for nil:NilClass:
+  app/views/users/show.html.erb:1
+
+Started POST "/__better_errors/c24cfc3db196ce2d/variables" for ::1 at 2023-06-13 16:11:03 -0400
+Started GET "/users/7" for ::1 at 2023-06-13 16:11:14 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"7"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 8.9ms | Allocations: 3279)
+  Rendered layout layouts/application.html.erb (Duration: 10.0ms | Allocations: 3367)
+Completed 500 Internal Server Error in 12ms (Allocations: 3921)
+
+
+
+NameError - undefined local variable or method `user' for #<ActionView::Base:0x00000000017c28>
+Did you mean?  super:
+  app/views/users/show.html.erb:1
+
+Started POST "/__better_errors/26e3ee32bfb0017f/variables" for ::1 at 2023-06-13 16:11:14 -0400
+Started GET "/users/7" for ::1 at 2023-06-13 16:11:30 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"7"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendered users/show.html.erb within layouts/application (Duration: 24.6ms | Allocations: 4149)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 32.7ms | Allocations: 6683)
+Completed 200 OK in 35ms (Views: 34.9ms | ActiveRecord: 10.4ms | Allocations: 7279)
+
+
+Started DELETE "/session" for ::1 at 2023-06-13 16:11:36 -0400
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:46:in `reset_session_token'
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "manel@manel.ii"], ["id", 7], ["LIMIT", 1]]
+  ↳ app/models/user.rb:46:in `reset_session_token'
+  [1m[36mUser Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 7], ["LIMIT", 1]]
+  ↳ app/models/user.rb:46:in `reset_session_token'
+  [1m[36mUser Update (1.2ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "[FILTERED]"], ["updated_at", "2023-06-13 20:11:36.821392"], ["id", 7]]
+  ↳ app/models/user.rb:46:in `reset_session_token'
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:46:in `reset_session_token'
+Redirected to http://localhost:3000/session/new
+Completed 302 Found in 23ms (ActiveRecord: 6.0ms | Allocations: 4537)
+
+
+Started GET "/session/new" for ::1 at 2023-06-13 16:11:36 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.8ms | Allocations: 627)
+  Rendered layout layouts/application.html.erb (Duration: 3.9ms | Allocations: 1850)
+Completed 200 OK in 5ms (Views: 4.9ms | ActiveRecord: 0.0ms | Allocations: 2394)
+
+
+Started POST "/session" for ::1 at 2023-06-13 16:11:58 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"manel@manel.aa", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "manel@manel.aa"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:17:in `find_by_credentials'
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.6ms | Allocations: 55)
+  Rendered layout layouts/application.html.erb (Duration: 3.9ms | Allocations: 1054)
+Completed 200 OK in 8ms (Views: 4.7ms | ActiveRecord: 0.3ms | Allocations: 2199)
+
+
+Started POST "/session" for ::1 at 2023-06-13 16:12:10 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"manel@manel.ii", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "manel@manel.ii"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:17:in `find_by_credentials'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:46:in `reset_session_token'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "manel@manel.ii"], ["id", 7], ["LIMIT", 1]]
+  ↳ app/models/user.rb:46:in `reset_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 7], ["LIMIT", 1]]
+  ↳ app/models/user.rb:46:in `reset_session_token'
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "[FILTERED]"], ["updated_at", "2023-06-13 20:12:10.709399"], ["id", 7]]
+  ↳ app/models/user.rb:46:in `reset_session_token'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:46:in `reset_session_token'
+Redirected to http://localhost:3000/users/7
+Completed 302 Found in 288ms (ActiveRecord: 2.1ms | Allocations: 4519)
+
+
+Started GET "/users/7" for ::1 at 2023-06-13 16:12:10 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"7"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendered users/show.html.erb within layouts/application (Duration: 1.1ms | Allocations: 870)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 2.8ms | Allocations: 2805)
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.2ms | Allocations: 3026)
+
+
+Started DELETE "/session" for ::1 at 2023-06-13 16:12:18 -0400
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:46:in `reset_session_token'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "manel@manel.ii"], ["id", 7], ["LIMIT", 1]]
+  ↳ app/models/user.rb:46:in `reset_session_token'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 7], ["LIMIT", 1]]
+  ↳ app/models/user.rb:46:in `reset_session_token'
+  [1m[36mUser Update (0.8ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "[FILTERED]"], ["updated_at", "2023-06-13 20:12:18.498679"], ["id", 7]]
+  ↳ app/models/user.rb:46:in `reset_session_token'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:46:in `reset_session_token'
+Redirected to http://localhost:3000/session/new
+Completed 302 Found in 15ms (ActiveRecord: 2.3ms | Allocations: 4343)
+
+
+Started GET "/session/new" for ::1 at 2023-06-13 16:12:18 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 373)
+  Rendered layout layouts/application.html.erb (Duration: 3.2ms | Allocations: 1386)
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.0ms | Allocations: 1623)
+
+
+Started GET "/session/new" for ::1 at 2023-06-13 16:16:18 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 2.8ms | Allocations: 649)
+  Rendered layout layouts/application.html.erb (Duration: 8.3ms | Allocations: 2223)
+Completed 200 OK in 12ms (Views: 10.3ms | ActiveRecord: 0.0ms | Allocations: 3028)
+
+
+Started GET "/session/new" for ::1 at 2023-06-13 16:16:19 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.6ms | Allocations: 370)
+  Rendered layout layouts/application.html.erb (Duration: 2.4ms | Allocations: 1383)
+Completed 200 OK in 3ms (Views: 2.8ms | ActiveRecord: 0.0ms | Allocations: 1639)
+
+
+Started GET "/session/new" for ::1 at 2023-06-13 16:16:59 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 2.0ms | Allocations: 640)
+  Rendered layout layouts/application.html.erb (Duration: 5.3ms | Allocations: 2215)
+Completed 200 OK in 8ms (Views: 6.8ms | ActiveRecord: 0.0ms | Allocations: 3006)
+
+
+Started GET "/session/new" for ::1 at 2023-06-13 16:17:00 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.8ms | Allocations: 373)
+  Rendered layout layouts/application.html.erb (Duration: 3.7ms | Allocations: 1386)
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.0ms | Allocations: 1642)
+
+
+Started GET "/session/new" for ::1 at 2023-06-13 16:17:01 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.6ms | Allocations: 373)
+  Rendered layout layouts/application.html.erb (Duration: 3.8ms | Allocations: 1386)
+Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.0ms | Allocations: 1619)
+
+
+Started GET "/session/new" for ::1 at 2023-06-13 16:18:39 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.7ms | Allocations: 637)
+  Rendered layout layouts/application.html.erb (Duration: 7.4ms | Allocations: 2207)
+Completed 200 OK in 11ms (Views: 9.6ms | Allocations: 2989)
+
+
+Started GET "/session/new" for ::1 at 2023-06-13 16:18:40 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.8ms | Allocations: 394)
+  Rendered layout layouts/application.html.erb (Duration: 3.5ms | Allocations: 1407)
+Completed 200 OK in 5ms (Views: 4.1ms | Allocations: 1659)
+
+
+Started GET "/session/new" for ::1 at 2023-06-13 16:18:40 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.8ms | Allocations: 379)
+  Rendered layout layouts/application.html.erb (Duration: 2.9ms | Allocations: 1392)
+Completed 200 OK in 4ms (Views: 3.4ms | Allocations: 1622)
+
+
+Started GET "/session/new" for ::1 at 2023-06-13 16:18:41 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 382)
+  Rendered layout layouts/application.html.erb (Duration: 3.2ms | Allocations: 1395)
+Completed 200 OK in 4ms (Views: 3.8ms | Allocations: 1625)
+
+
+Started GET "/session/new" for ::1 at 2023-06-13 16:18:41 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.9ms | Allocations: 376)
+  Rendered layout layouts/application.html.erb (Duration: 2.8ms | Allocations: 1389)
+Completed 200 OK in 4ms (Views: 3.3ms | Allocations: 1619)
+
+
+Started GET "/session/new" for ::1 at 2023-06-13 16:18:41 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.9ms | Allocations: 394)
+  Rendered layout layouts/application.html.erb (Duration: 4.8ms | Allocations: 1407)
+Completed 200 OK in 7ms (Views: 6.1ms | Allocations: 1637)
+
+
+Started GET "/session/new" for ::1 at 2023-06-13 16:18:41 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.3ms | Allocations: 361)
+  Rendered layout layouts/application.html.erb (Duration: 4.0ms | Allocations: 1374)
+Completed 200 OK in 5ms (Views: 4.8ms | Allocations: 1604)
+
+
+Started GET "/session/new" for ::1 at 2023-06-13 16:29:18 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.8ms | Allocations: 631)
+  Rendered layout layouts/application.html.erb (Duration: 7.1ms | Allocations: 2212)
+Completed 200 OK in 10ms (Views: 8.8ms | Allocations: 2994)
+
+
+Started GET "/session/style.css" for ::1 at 2023-06-13 16:29:18 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/session/style.css"):
+  
+Started GET "/session/new" for ::1 at 2023-06-13 16:29:19 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.6ms | Allocations: 376)
+  Rendered layout layouts/application.html.erb (Duration: 2.2ms | Allocations: 1393)
+Completed 200 OK in 3ms (Views: 2.6ms | Allocations: 1645)
+
+
+Started GET "/session/style.css" for ::1 at 2023-06-13 16:29:19 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/session/style.css"):
+  
+Started GET "/session/new" for ::1 at 2023-06-13 16:29:20 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.6ms | Allocations: 379)
+  Rendered layout layouts/application.html.erb (Duration: 5.0ms | Allocations: 1398)
+Completed 200 OK in 6ms (Views: 5.6ms | Allocations: 1629)
+
+
+Started GET "/session/style.css" for ::1 at 2023-06-13 16:29:20 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/session/style.css"):
+  
+Started GET "/session/new" for ::1 at 2023-06-13 16:29:21 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.8ms | Allocations: 388)
+  Rendered layout layouts/application.html.erb (Duration: 3.8ms | Allocations: 1407)
+Completed 200 OK in 5ms (Views: 4.5ms | Allocations: 1638)
+
+
+Started GET "/session/style.css" for ::1 at 2023-06-13 16:29:21 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/session/style.css"):
+  
+Started GET "/session/new" for ::1 at 2023-06-13 16:29:21 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.2ms | Allocations: 367)
+  Rendered layout layouts/application.html.erb (Duration: 3.3ms | Allocations: 1380)
+Completed 200 OK in 4ms (Views: 3.8ms | Allocations: 1610)
+
+
+Started GET "/session/style.css" for ::1 at 2023-06-13 16:29:21 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/session/style.css"):
+  
+Started GET "/session/new" for ::1 at 2023-06-13 16:29:21 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 376)
+  Rendered layout layouts/application.html.erb (Duration: 4.7ms | Allocations: 1389)
+Completed 200 OK in 6ms (Views: 5.4ms | Allocations: 1619)
+
+
+Started GET "/session/style.css" for ::1 at 2023-06-13 16:29:21 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/session/style.css"):
+  
+Started GET "/session/new" for ::1 at 2023-06-13 16:29:21 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.2ms | Allocations: 391)
+  Rendered layout layouts/application.html.erb (Duration: 5.4ms | Allocations: 1404)
+Completed 200 OK in 7ms (Views: 6.3ms | Allocations: 1634)
+
+
+Started GET "/session/style.css" for ::1 at 2023-06-13 16:29:21 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/session/style.css"):
+  
+Started GET "/session/new" for ::1 at 2023-06-13 16:29:42 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 2.1ms | Allocations: 631)
+  Rendered layout layouts/application.html.erb (Duration: 6.5ms | Allocations: 2210)
+Completed 200 OK in 10ms (Views: 8.4ms | Allocations: 2985)
+
+
+Started GET "/session/style.css" for ::1 at 2023-06-13 16:29:42 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/session/style.css"):
+  
+Started GET "/session/new" for ::1 at 2023-06-13 16:29:43 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.8ms | Allocations: 382)
+  Rendered layout layouts/application.html.erb (Duration: 3.9ms | Allocations: 1401)
+Completed 200 OK in 5ms (Views: 4.5ms | Allocations: 1654)
+
+
+Started GET "/session/style.css" for ::1 at 2023-06-13 16:29:43 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/session/style.css"):
+  
+Started GET "/session/new" for ::1 at 2023-06-13 16:29:43 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.2ms | Allocations: 385)
+  Rendered layout layouts/application.html.erb (Duration: 5.8ms | Allocations: 1404)
+Completed 200 OK in 7ms (Views: 6.6ms | Allocations: 1635)
+
+
+Started GET "/session/style.css" for ::1 at 2023-06-13 16:29:43 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/session/style.css"):
+  
+Started GET "/session/new" for ::1 at 2023-06-13 16:29:43 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 373)
+  Rendered layout layouts/application.html.erb (Duration: 3.2ms | Allocations: 1386)
+Completed 200 OK in 4ms (Views: 3.7ms | Allocations: 1616)
+
+
+Started GET "/session/style.css" for ::1 at 2023-06-13 16:29:43 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/session/style.css"):
+  
+Started GET "/session/new" for ::1 at 2023-06-13 16:30:11 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.8ms | Allocations: 637)
+  Rendered layout layouts/application.html.erb (Duration: 5.4ms | Allocations: 2213)
+Completed 200 OK in 9ms (Views: 7.0ms | Allocations: 2988)
+
+
+Started GET "/session/style.css" for ::1 at 2023-06-13 16:30:11 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/session/style.css"):
+  
+Started GET "/session/new" for ::1 at 2023-06-13 16:30:12 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.8ms | Allocations: 382)
+  Rendered layout layouts/application.html.erb (Duration: 3.6ms | Allocations: 1395)
+Completed 200 OK in 5ms (Views: 4.2ms | Allocations: 1647)
+
+
+Started GET "/session/style.css" for ::1 at 2023-06-13 16:30:12 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/session/style.css"):
+  
+Started GET "/session/new" for ::1 at 2023-06-13 16:30:40 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.5ms | Allocations: 643)
+  Rendered layout layouts/application.html.erb (Duration: 5.5ms | Allocations: 2226)
+Completed 200 OK in 8ms (Views: 7.3ms | Allocations: 3005)
+
+
+Started GET "/session/style.css" for ::1 at 2023-06-13 16:30:40 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/session/style.css"):
+  
+Started GET "/session/new" for ::1 at 2023-06-13 16:30:53 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.1ms | Allocations: 361)
+  Rendered layout layouts/application.html.erb (Duration: 4.0ms | Allocations: 1380)
+Completed 200 OK in 6ms (Views: 4.9ms | Allocations: 1634)
+
+
+Started GET "/session/style.css" for ::1 at 2023-06-13 16:30:53 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/session/style.css"):
+  
+Started GET "/users" for ::1 at 2023-06-13 16:30:58 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+Started GET "/users/new" for ::1 at 2023-06-13 16:31:00 -0400
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 2.0ms | Allocations: 643)
+  Rendered layout layouts/application.html.erb (Duration: 4.6ms | Allocations: 1864)
+Completed 200 OK in 7ms (Views: 6.3ms | Allocations: 2387)
+
+
+Started GET "/users/style.css" for ::1 at 2023-06-13 16:31:00 -0400
+Processing by UsersController#show as CSS
+  Parameters: {"id"=>"style"}
+Completed 406 Not Acceptable in 1ms (Allocations: 287)
+
+
+
+ActionController::UnknownFormat - UsersController#show is missing a template for this request format and variant.
+request.formats: ["text/css"]
+request.variant: []:
+
+Started GET "/users/new" for ::1 at 2023-06-13 16:31:29 -0400
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.8ms | Allocations: 385)
+  Rendered layout layouts/application.html.erb (Duration: 3.1ms | Allocations: 1398)
+Completed 200 OK in 4ms (Views: 3.6ms | Allocations: 1638)
+
+
+Started GET "/users/style.css" for ::1 at 2023-06-13 16:31:29 -0400
+Processing by UsersController#show as CSS
+  Parameters: {"id"=>"style"}
+Completed 406 Not Acceptable in 0ms (Allocations: 139)
+
+
+
+ActionController::UnknownFormat - UsersController#show is missing a template for this request format and variant.
+request.formats: ["text/css"]
+request.variant: []:
+
+Started GET "/users/new" for ::1 at 2023-06-13 16:31:30 -0400
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 364)
+  Rendered layout layouts/application.html.erb (Duration: 3.6ms | Allocations: 1377)
+Completed 200 OK in 4ms (Views: 4.1ms | Allocations: 1593)
+
+
+Started GET "/users/style.css" for ::1 at 2023-06-13 16:31:30 -0400
+Processing by UsersController#show as CSS
+  Parameters: {"id"=>"style"}
+Completed 406 Not Acceptable in 0ms (Allocations: 139)
+
+
+
+ActionController::UnknownFormat - UsersController#show is missing a template for this request format and variant.
+request.formats: ["text/css"]
+request.variant: []:
+
+Started GET "/users/new" for ::1 at 2023-06-13 16:31:31 -0400
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.8ms | Allocations: 367)
+  Rendered layout layouts/application.html.erb (Duration: 3.4ms | Allocations: 1380)
+Completed 200 OK in 4ms (Views: 4.0ms | Allocations: 1596)
+
+
+Started GET "/users/style.css" for ::1 at 2023-06-13 16:31:31 -0400
+Processing by UsersController#show as CSS
+  Parameters: {"id"=>"style"}
+Completed 406 Not Acceptable in 0ms (Allocations: 139)
+
+
+
+ActionController::UnknownFormat - UsersController#show is missing a template for this request format and variant.
+request.formats: ["text/css"]
+request.variant: []:
+
+Started GET "/users/style.css" for ::1 at 2023-06-13 16:31:35 -0400
+Processing by UsersController#show as CSS
+  Parameters: {"id"=>"style"}
+Completed 406 Not Acceptable in 0ms (Allocations: 139)
+
+
+
+ActionController::UnknownFormat - UsersController#show is missing a template for this request format and variant.
+request.formats: ["text/css"]
+request.variant: []:
+
+Started POST "/users" for ::1 at 2023-06-13 16:32:26 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:36:in `block in generate_unique_session_token'
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:36:in `block in generate_unique_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", ""], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:10:in `create'
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:10:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:10:in `create'
+Completed 422 Unprocessable Entity in 299ms (ActiveRecord: 9.7ms | Allocations: 7515)
+
+
+
+ActiveRecord::RecordInvalid - Validation failed: Email can't be blank, Password is too short (minimum is 6 characters):
+  app/controllers/users_controller.rb:10:in `create'
+
+Started POST "/__better_errors/5577efd4419de0c9/variables" for ::1 at 2023-06-13 16:32:27 -0400
+Started GET "/session/style.css" for ::1 at 2023-06-13 16:33:07 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/session/style.css"):
+  
+Started GET "/session/new" for ::1 at 2023-06-13 16:33:33 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.8ms | Allocations: 649)
+  Rendered layout layouts/application.html.erb (Duration: 6.9ms | Allocations: 2223)
+Completed 200 OK in 10ms (Views: 8.6ms | ActiveRecord: 0.0ms | Allocations: 3011)
+
+
+Started GET "/session/style.css" for ::1 at 2023-06-13 16:33:33 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/session/style.css"):
+  
+Started GET "/session/new" for ::1 at 2023-06-13 16:33:34 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 385)
+  Rendered layout layouts/application.html.erb (Duration: 3.3ms | Allocations: 1398)
+Completed 200 OK in 4ms (Views: 3.9ms | ActiveRecord: 0.0ms | Allocations: 1655)
+
+
+Started GET "/session/style.css" for ::1 at 2023-06-13 16:33:34 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/session/style.css"):
+  
+Started GET "/session/new" for ::1 at 2023-06-13 16:35:30 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.3ms | Allocations: 376)
+  Rendered layout layouts/application.html.erb (Duration: 5.2ms | Allocations: 1395)
+Completed 200 OK in 7ms (Views: 6.1ms | ActiveRecord: 0.0ms | Allocations: 1629)
+
+
+Started GET "/session/style.css" for ::1 at 2023-06-13 16:35:30 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/session/style.css"):
+  
+Started GET "/session/new" for ::1 at 2023-06-13 16:35:48 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 2.2ms | Allocations: 1122)
+  Rendered layout layouts/application.html.erb (Duration: 5.1ms | Allocations: 4543)
+Completed 200 OK in 20ms (Views: 6.6ms | ActiveRecord: 5.9ms | Allocations: 14161)
+
+
+Started GET "/session/style.css" for ::1 at 2023-06-13 16:35:48 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/session/style.css"):
+  
+Started GET "/session/new" for ::1 at 2023-06-13 16:35:50 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.8ms | Allocations: 398)
+  Rendered layout layouts/application.html.erb (Duration: 3.1ms | Allocations: 1523)
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.0ms | Allocations: 1819)
+
+
+Started GET "/session/style.css" for ::1 at 2023-06-13 16:35:50 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/session/style.css"):
+  
+Started GET "/session/new" for ::1 at 2023-06-13 16:39:53 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 2.6ms | Allocations: 637)
+  Rendered layout layouts/application.html.erb (Duration: 7.4ms | Allocations: 2206)
+Completed 200 OK in 11ms (Views: 9.9ms | ActiveRecord: 0.0ms | Allocations: 3000)
+
+
+Started GET "/session/style.css" for ::1 at 2023-06-13 16:39:53 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/session/style.css"):
+  
+Started GET "/session/new" for ::1 at 2023-06-13 16:39:53 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 379)
+  Rendered layout layouts/application.html.erb (Duration: 3.7ms | Allocations: 1399)
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.0ms | Allocations: 1656)
+
+
+Started GET "/session/style.css" for ::1 at 2023-06-13 16:39:53 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/session/style.css"):
+  
+Started POST "/session" for ::1 at 2023-06-13 16:39:56 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"manel@manel.io", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "manel@manel.io"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:17:in `find_by_credentials'
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.3ms | Allocations: 74)
+  Rendered layout layouts/application.html.erb (Duration: 1.2ms | Allocations: 1194)
+Completed 200 OK in 288ms (Views: 1.8ms | ActiveRecord: 1.3ms | Allocations: 5028)
+
+
+Started GET "/style.css" for ::1 at 2023-06-13 16:39:56 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/style.css"):
+  
+Started GET "/session" for ::1 at 2023-06-13 16:40:04 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/session"):
+  
+Started GET "/session/new" for ::1 at 2023-06-13 16:40:13 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 373)
+  Rendered layout layouts/application.html.erb (Duration: 3.4ms | Allocations: 1395)
+Completed 200 OK in 4ms (Views: 3.9ms | ActiveRecord: 0.0ms | Allocations: 1645)
+
+
+Started GET "/session/style.css" for ::1 at 2023-06-13 16:40:13 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/session/style.css"):
+  
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4505726345591715405)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateBands (20230613204112)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.7ms)[0m  [1m[35mCREATE TABLE "bands" ("id" bigserial primary key, "naem" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230613204112"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(4505726345591715405)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/bands" for ::1 at 2023-06-13 17:02:31 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BandsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering bands/index.html.erb within layouts/application
+  [1m[36mBand Load (0.9ms)[0m  [1m[34mSELECT "bands".* FROM "bands"[0m
+  ↳ app/views/bands/index.html.erb:1
+  Rendered bands/index.html.erb within layouts/application (Duration: 1.6ms | Allocations: 893)
+  Rendered layout layouts/application.html.erb (Duration: 3.3ms | Allocations: 2879)
+Completed 200 OK in 5ms (Views: 3.3ms | ActiveRecord: 0.9ms | Allocations: 4542)
+
+
+Started GET "/style.css" for ::1 at 2023-06-13 17:02:31 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/style.css"):
+  
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4505726345591715405)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateBands (20230613204112)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.7ms)[0m  [1m[35mDROP TABLE "bands"[0m
+  [1m[36mActiveRecord::SchemaMigration Delete All (0.4ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20230613204112"]]
+  [1m[36mTRANSACTION (3.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(4505726345591715405)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4505726345591715405)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateBands (20230613204112)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "bands" ("id" bigserial primary key, "name" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230613204112"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(4505726345591715405)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBand Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "bands" WHERE "bands"."name" = $1 LIMIT $2[0m  [["name", "Nelma"], ["LIMIT", 1]]
+  [1m[36mBand Create (0.5ms)[0m  [1m[32mINSERT INTO "bands" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Nelma"], ["created_at", "2023-06-13 21:05:04.072979"], ["updated_at", "2023-06-13 21:05:04.072979"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/bands" for ::1 at 2023-06-13 17:05:09 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BandsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering bands/index.html.erb within layouts/application
+  [1m[36mBand Load (0.5ms)[0m  [1m[34mSELECT "bands".* FROM "bands"[0m
+  ↳ app/views/bands/index.html.erb:1
+  Rendered bands/index.html.erb within layouts/application (Duration: 7.4ms | Allocations: 2617)
+  Rendered layout layouts/application.html.erb (Duration: 8.8ms | Allocations: 4261)
+Completed 200 OK in 10ms (Views: 3.6ms | ActiveRecord: 5.8ms | Allocations: 5576)
+
+
+Started GET "/style.css" for ::1 at 2023-06-13 17:05:09 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/style.css"):
+  
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBand Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "bands" WHERE "bands"."name" = $1 LIMIT $2[0m  [["name", "Nini"], ["LIMIT", 1]]
+  [1m[36mBand Create (0.3ms)[0m  [1m[32mINSERT INTO "bands" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Nini"], ["created_at", "2023-06-13 21:06:57.524830"], ["updated_at", "2023-06-13 21:06:57.524830"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/bands" for ::1 at 2023-06-13 17:07:05 -0400
+Processing by BandsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering bands/index.html.erb within layouts/application
+  [1m[36mBand Load (0.4ms)[0m  [1m[34mSELECT "bands".* FROM "bands"[0m
+  ↳ app/views/bands/index.html.erb:2
+  Rendered bands/index.html.erb within layouts/application (Duration: 3.4ms | Allocations: 830)
+  Rendered layout layouts/application.html.erb (Duration: 10.4ms | Allocations: 2786)
+Completed 200 OK in 14ms (Views: 13.4ms | ActiveRecord: 0.4ms | Allocations: 3581)
+
+
+Started GET "/style.css" for ::1 at 2023-06-13 17:07:05 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/style.css"):
+  
+Started GET "/bands/1" for ::1 at 2023-06-13 17:07:11 -0400
+Processing by BandsController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms | Allocations: 3528)
+
+
+
+NameError - undefined local variable or method `id' for #<BandsController:0x00000000008020>
+        @band = Band.find_by(id: id)
+                                 ^^:
+  app/controllers/bands_controller.rb:46:in `set_band'
+
+Started POST "/__better_errors/44c2687ca1074e84/variables" for ::1 at 2023-06-13 17:07:11 -0400
+Started GET "/bands/1" for ::1 at 2023-06-13 17:09:17 -0400
+Processing by BandsController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 3983)
+
+
+
+NoMethodError - undefined method `id' for #<BandsController:0x0000000000b388>
+        @band = Band.find(self.id)
+                              ^^^:
+  app/controllers/bands_controller.rb:46:in `set_band'
+
+Started POST "/__better_errors/a2c3cc1c850178cd/variables" for ::1 at 2023-06-13 17:09:17 -0400
+Started GET "/bands/1" for ::1 at 2023-06-13 17:09:18 -0400
+Processing by BandsController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms | Allocations: 3262)
+
+
+
+NoMethodError - undefined method `id' for #<BandsController:0x0000000000b400>
+        @band = Band.find(self.id)
+                              ^^^:
+  app/controllers/bands_controller.rb:46:in `set_band'
+
+Started POST "/__better_errors/6e7913ab7643c143/variables" for ::1 at 2023-06-13 17:09:18 -0400
+Started GET "/bands/1" for ::1 at 2023-06-13 17:10:32 -0400
+Processing by BandsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBand Load (0.2ms)[0m  [1m[34mSELECT "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/bands_controller.rb:46:in `set_band'
+Redirected to http://localhost:3000/bands
+Filter chain halted as :set_band rendered or redirected
+Completed 302 Found in 7ms (ActiveRecord: 3.3ms | Allocations: 4023)
+
+
+Started GET "/bands" for ::1 at 2023-06-13 17:10:33 -0400
+Processing by BandsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering bands/index.html.erb within layouts/application
+  [1m[36mBand Load (0.2ms)[0m  [1m[34mSELECT "bands".* FROM "bands"[0m
+  ↳ app/views/bands/index.html.erb:2
+  Rendered bands/index.html.erb within layouts/application (Duration: 0.8ms | Allocations: 696)
+  Rendered layout layouts/application.html.erb (Duration: 2.2ms | Allocations: 2343)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.2ms | Allocations: 2844)
+
+
+Started GET "/style.css" for ::1 at 2023-06-13 17:10:33 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/style.css"):
+  
+Started GET "/bands/2" for ::1 at 2023-06-13 17:10:38 -0400
+Processing by BandsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mBand Load (0.4ms)[0m  [1m[34mSELECT "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/bands_controller.rb:46:in `set_band'
+Redirected to http://localhost:3000/bands
+Filter chain halted as :set_band rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms | Allocations: 672)
+
+
+Started GET "/bands" for ::1 at 2023-06-13 17:10:38 -0400
+Processing by BandsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering bands/index.html.erb within layouts/application
+  [1m[36mBand Load (0.4ms)[0m  [1m[34mSELECT "bands".* FROM "bands"[0m
+  ↳ app/views/bands/index.html.erb:2
+  Rendered bands/index.html.erb within layouts/application (Duration: 2.4ms | Allocations: 577)
+  Rendered layout layouts/application.html.erb (Duration: 6.9ms | Allocations: 1941)
+Completed 200 OK in 8ms (Views: 7.3ms | ActiveRecord: 0.4ms | Allocations: 2177)
+
+
+Started GET "/style.css" for ::1 at 2023-06-13 17:10:38 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/style.css"):
+  
+Started GET "/band/1" for ::1 at 2023-06-13 17:11:33 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/band/1"):
+  
+Started GET "/bands/1" for ::1 at 2023-06-13 17:11:40 -0400
+Processing by BandsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBand Load (0.5ms)[0m  [1m[34mSELECT "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/bands_controller.rb:46:in `set_band'
+Redirected to http://localhost:3000/bands
+Filter chain halted as :set_band rendered or redirected
+Completed 302 Found in 4ms (ActiveRecord: 0.5ms | Allocations: 627)
+
+
+Started GET "/bands" for ::1 at 2023-06-13 17:11:40 -0400
+Processing by BandsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering bands/index.html.erb within layouts/application
+  [1m[36mBand Load (0.4ms)[0m  [1m[34mSELECT "bands".* FROM "bands"[0m
+  ↳ app/views/bands/index.html.erb:2
+  Rendered bands/index.html.erb within layouts/application (Duration: 2.6ms | Allocations: 577)
+  Rendered layout layouts/application.html.erb (Duration: 7.2ms | Allocations: 1917)
+Completed 200 OK in 8ms (Views: 7.6ms | ActiveRecord: 0.4ms | Allocations: 2134)
+
+
+Started GET "/style.css" for ::1 at 2023-06-13 17:11:40 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/style.css"):
+  
+Started GET "/bands/new" for ::1 at 2023-06-13 17:14:58 -0400
+Processing by BandsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering bands/new.html.erb within layouts/application
+  Rendered bands/new.html.erb within layouts/application (Duration: 2.0ms | Allocations: 633)
+  Rendered layout layouts/application.html.erb (Duration: 7.5ms | Allocations: 2199)
+Completed 200 OK in 11ms (Views: 9.3ms | ActiveRecord: 0.0ms | Allocations: 3001)
+
+
+Started GET "/bands/style.css" for ::1 at 2023-06-13 17:14:58 -0400
+Processing by BandsController#show as CSS
+  Parameters: {"id"=>"style"}
+  [1m[36mBand Load (0.2ms)[0m  [1m[34mSELECT "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/bands_controller.rb:46:in `set_band'
+Completed 404 Not Found in 3ms (ActiveRecord: 0.2ms | Allocations: 1149)
+
+
+
+ActiveRecord::RecordNotFound - Couldn't find Band with 'id'=style:
+  app/controllers/bands_controller.rb:46:in `set_band'
+
+Started POST "/bands" for ::1 at 2023-06-13 17:15:10 -0400
+Processing by BandsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "bands"=>{"name"=>"Lola"}}
+Completed 400 Bad Request in 2ms (ActiveRecord: 0.0ms | Allocations: 1020)
+
+
+
+ActionController::ParameterMissing - param is missing or the value is empty: band
+Did you mean?  bands:
+  app/controllers/bands_controller.rb:42:in `band_params'
+  app/controllers/bands_controller.rb:11:in `create'
+
+Started POST "/__better_errors/e6a98ef5896a71fc/variables" for ::1 at 2023-06-13 17:15:10 -0400
+Started POST "/bands" for ::1 at 2023-06-13 17:16:39 -0400
+Processing by BandsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "bands"=>{"name"=>"Lola"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/bands_controller.rb:12:in `create'
+  [1m[36mBand Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "bands" WHERE "bands"."name" = $1 LIMIT $2[0m  [["name", "Lola"], ["LIMIT", 1]]
+  ↳ app/controllers/bands_controller.rb:12:in `create'
+  [1m[36mBand Create (0.3ms)[0m  [1m[32mINSERT INTO "bands" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Lola"], ["created_at", "2023-06-13 21:16:40.037316"], ["updated_at", "2023-06-13 21:16:40.037316"]]
+  ↳ app/controllers/bands_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/bands_controller.rb:12:in `create'
+Redirected to http://localhost:3000/bands/3
+Completed 302 Found in 12ms (ActiveRecord: 4.7ms | Allocations: 7172)
+
+
+Started GET "/bands/3" for ::1 at 2023-06-13 17:16:40 -0400
+Processing by BandsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mBand Load (0.2ms)[0m  [1m[34mSELECT "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/bands_controller.rb:46:in `set_band'
+Redirected to http://localhost:3000/bands
+Filter chain halted as :set_band rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.2ms | Allocations: 1563)
+
+
+Started GET "/bands" for ::1 at 2023-06-13 17:16:40 -0400
+Processing by BandsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering bands/index.html.erb within layouts/application
+  [1m[36mBand Load (0.1ms)[0m  [1m[34mSELECT "bands".* FROM "bands"[0m
+  ↳ app/views/bands/index.html.erb:2
+  Rendered bands/index.html.erb within layouts/application (Duration: 1.2ms | Allocations: 851)
+  Rendered layout layouts/application.html.erb (Duration: 2.3ms | Allocations: 2487)
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.1ms | Allocations: 3054)
+
+
+Started GET "/style.css" for ::1 at 2023-06-13 17:16:40 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/style.css"):
+  
+Started GET "/bands/3" for ::1 at 2023-06-13 17:16:53 -0400
+Processing by BandsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mBand Load (0.5ms)[0m  [1m[34mSELECT "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/bands_controller.rb:46:in `set_band'
+Redirected to http://localhost:3000/bands
+Filter chain halted as :set_band rendered or redirected
+Completed 302 Found in 4ms (ActiveRecord: 0.5ms | Allocations: 672)
+
+
+Started GET "/bands" for ::1 at 2023-06-13 17:16:53 -0400
+Processing by BandsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering bands/index.html.erb within layouts/application
+  [1m[36mBand Load (0.3ms)[0m  [1m[34mSELECT "bands".* FROM "bands"[0m
+  ↳ app/views/bands/index.html.erb:2
+  Rendered bands/index.html.erb within layouts/application (Duration: 2.1ms | Allocations: 589)
+  Rendered layout layouts/application.html.erb (Duration: 5.3ms | Allocations: 1950)
+Completed 200 OK in 6ms (Views: 5.7ms | ActiveRecord: 0.3ms | Allocations: 2186)
+
+
+Started GET "/style.css" for ::1 at 2023-06-13 17:16:53 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/style.css"):
+  
+Started GET "/bands/3" for ::1 at 2023-06-13 17:16:57 -0400
+Processing by BandsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mBand Load (0.3ms)[0m  [1m[34mSELECT "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/bands_controller.rb:46:in `set_band'
+Redirected to http://localhost:3000/bands
+Filter chain halted as :set_band rendered or redirected
+Completed 302 Found in 4ms (ActiveRecord: 0.3ms | Allocations: 627)
+
+
+Started GET "/bands" for ::1 at 2023-06-13 17:16:57 -0400
+Processing by BandsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering bands/index.html.erb within layouts/application
+  [1m[36mBand Load (0.3ms)[0m  [1m[34mSELECT "bands".* FROM "bands"[0m
+  ↳ app/views/bands/index.html.erb:2
+  Rendered bands/index.html.erb within layouts/application (Duration: 2.2ms | Allocations: 589)
+  Rendered layout layouts/application.html.erb (Duration: 6.0ms | Allocations: 1929)
+Completed 200 OK in 8ms (Views: 7.1ms | ActiveRecord: 0.3ms | Allocations: 2146)
+
+
+Started GET "/style.css" for ::1 at 2023-06-13 17:16:57 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/style.css"):
+  
+Started GET "/bands/new" for ::1 at 2023-06-13 17:17:02 -0400
+Processing by BandsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering bands/new.html.erb within layouts/application
+  Rendered bands/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 382)
+  Rendered layout layouts/application.html.erb (Duration: 3.5ms | Allocations: 1402)
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.0ms | Allocations: 1642)
+
+
+Started GET "/bands/style.css" for ::1 at 2023-06-13 17:17:02 -0400
+Processing by BandsController#show as CSS
+  Parameters: {"id"=>"style"}
+  [1m[36mBand Load (0.2ms)[0m  [1m[34mSELECT "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/bands_controller.rb:46:in `set_band'
+Completed 404 Not Found in 3ms (ActiveRecord: 0.2ms | Allocations: 1066)
+
+
+
+ActiveRecord::RecordNotFound - Couldn't find Band with 'id'=style:
+  app/controllers/bands_controller.rb:46:in `set_band'
+
+Started POST "/bands" for ::1 at 2023-06-13 17:17:10 -0400
+Processing by BandsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "bands"=>{"name"=>"Kikou"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/bands_controller.rb:12:in `create'
+  [1m[36mBand Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "bands" WHERE "bands"."name" = $1 LIMIT $2[0m  [["name", "Kikou"], ["LIMIT", 1]]
+  ↳ app/controllers/bands_controller.rb:12:in `create'
+  [1m[36mBand Create (0.4ms)[0m  [1m[32mINSERT INTO "bands" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Kikou"], ["created_at", "2023-06-13 21:17:10.270495"], ["updated_at", "2023-06-13 21:17:10.270495"]]
+  ↳ app/controllers/bands_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/bands_controller.rb:12:in `create'
+Redirected to http://localhost:3000/bands/4
+Completed 302 Found in 11ms (ActiveRecord: 1.4ms | Allocations: 3161)
+
+
+Started GET "/bands/4" for ::1 at 2023-06-13 17:17:10 -0400
+Processing by BandsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mBand Load (0.3ms)[0m  [1m[34mSELECT "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/bands_controller.rb:46:in `set_band'
+Redirected to http://localhost:3000/bands
+Filter chain halted as :set_band rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms | Allocations: 627)
+
+
+Started GET "/bands" for ::1 at 2023-06-13 17:17:10 -0400
+Processing by BandsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering bands/index.html.erb within layouts/application
+  [1m[36mBand Load (0.4ms)[0m  [1m[34mSELECT "bands".* FROM "bands"[0m
+  ↳ app/views/bands/index.html.erb:2
+  Rendered bands/index.html.erb within layouts/application (Duration: 3.0ms | Allocations: 602)
+  Rendered layout layouts/application.html.erb (Duration: 6.8ms | Allocations: 1960)
+Completed 200 OK in 8ms (Views: 7.1ms | ActiveRecord: 0.4ms | Allocations: 2177)
+
+
+Started GET "/style.css" for ::1 at 2023-06-13 17:17:10 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/style.css"):
+  
+Started GET "/band/1/edit" for ::1 at 2023-06-13 17:20:19 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/band/1/edit"):
+  
+Started GET "/bands/1/edit" for ::1 at 2023-06-13 17:20:26 -0400
+Processing by BandsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBand Load (0.3ms)[0m  [1m[34mSELECT "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/bands_controller.rb:46:in `set_band'
+Redirected to http://localhost:3000/bands
+Filter chain halted as :set_band rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms | Allocations: 627)
+
+
+Started GET "/bands" for ::1 at 2023-06-13 17:20:26 -0400
+Processing by BandsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering bands/index.html.erb within layouts/application
+  [1m[36mBand Load (0.3ms)[0m  [1m[34mSELECT "bands".* FROM "bands"[0m
+  ↳ app/views/bands/index.html.erb:2
+  Rendered bands/index.html.erb within layouts/application (Duration: 3.3ms | Allocations: 845)
+  Rendered layout layouts/application.html.erb (Duration: 9.4ms | Allocations: 2800)
+Completed 200 OK in 13ms (Views: 12.2ms | ActiveRecord: 0.3ms | Allocations: 3526)
+
+
+Started GET "/style.css" for ::1 at 2023-06-13 17:20:26 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/style.css"):
+  
+Started GET "/bands/1" for ::1 at 2023-06-13 17:20:30 -0400
+Processing by BandsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBand Load (0.2ms)[0m  [1m[34mSELECT "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/bands_controller.rb:46:in `set_band'
+Redirected to http://localhost:3000/bands
+Filter chain halted as :set_band rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms | Allocations: 672)
+
+
+Started GET "/bands" for ::1 at 2023-06-13 17:20:30 -0400
+Processing by BandsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering bands/index.html.erb within layouts/application
+  [1m[36mBand Load (0.2ms)[0m  [1m[34mSELECT "bands".* FROM "bands"[0m
+  ↳ app/views/bands/index.html.erb:2
+  Rendered bands/index.html.erb within layouts/application (Duration: 1.7ms | Allocations: 602)
+  Rendered layout layouts/application.html.erb (Duration: 3.4ms | Allocations: 1951)
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.2ms | Allocations: 2189)
+
+
+Started GET "/style.css" for ::1 at 2023-06-13 17:20:30 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/style.css"):
+  
+Started GET "/bands/1/edit" for ::1 at 2023-06-13 17:20:33 -0400
+Processing by BandsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBand Load (0.2ms)[0m  [1m[34mSELECT "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/bands_controller.rb:46:in `set_band'
+Redirected to http://localhost:3000/bands
+Filter chain halted as :set_band rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms | Allocations: 627)
+
+
+Started GET "/bands" for ::1 at 2023-06-13 17:20:33 -0400
+Processing by BandsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering bands/index.html.erb within layouts/application
+  [1m[36mBand Load (0.5ms)[0m  [1m[34mSELECT "bands".* FROM "bands"[0m
+  ↳ app/views/bands/index.html.erb:2
+  Rendered bands/index.html.erb within layouts/application (Duration: 2.7ms | Allocations: 602)
+  Rendered layout layouts/application.html.erb (Duration: 6.2ms | Allocations: 1941)
+Completed 200 OK in 7ms (Views: 6.4ms | ActiveRecord: 0.5ms | Allocations: 2157)
+
+
+Started GET "/style.css" for ::1 at 2023-06-13 17:20:33 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/style.css"):
+  
+Started GET "/bands/1/edit" for ::1 at 2023-06-13 17:20:48 -0400
+Processing by BandsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBand Load (0.3ms)[0m  [1m[34mSELECT "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/bands_controller.rb:46:in `set_band'
+Redirected to http://localhost:3000/bands
+Filter chain halted as :set_band rendered or redirected
+Completed 302 Found in 4ms (ActiveRecord: 0.3ms | Allocations: 627)
+
+
+Started GET "/bands" for ::1 at 2023-06-13 17:20:48 -0400
+Processing by BandsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering bands/index.html.erb within layouts/application
+  [1m[36mBand Load (0.3ms)[0m  [1m[34mSELECT "bands".* FROM "bands"[0m
+  ↳ app/views/bands/index.html.erb:2
+  Rendered bands/index.html.erb within layouts/application (Duration: 2.2ms | Allocations: 602)
+  Rendered layout layouts/application.html.erb (Duration: 6.0ms | Allocations: 1948)
+Completed 200 OK in 7ms (Views: 6.5ms | ActiveRecord: 0.3ms | Allocations: 2165)
+
+
+Started GET "/style.css" for ::1 at 2023-06-13 17:20:48 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/style.css"):
+  
+Started GET "/bands/1" for ::1 at 2023-06-13 17:24:29 -0400
+Processing by BandsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBand Load (0.1ms)[0m  [1m[34mSELECT "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/bands_controller.rb:47:in `set_band'
+Redirected to http://localhost:3000/bands
+Filter chain halted as :set_band rendered or redirected
+Completed 302 Found in 6ms (ActiveRecord: 3.0ms | Allocations: 3893)
+
+
+Started GET "/bands" for ::1 at 2023-06-13 17:24:29 -0400
+Processing by BandsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering bands/index.html.erb within layouts/application
+  [1m[36mBand Load (0.2ms)[0m  [1m[34mSELECT "bands".* FROM "bands"[0m
+  ↳ app/views/bands/index.html.erb:2
+  Rendered bands/index.html.erb within layouts/application (Duration: 1.0ms | Allocations: 721)
+  Rendered layout layouts/application.html.erb (Duration: 2.0ms | Allocations: 2347)
+Completed 200 OK in 2ms (Views: 2.2ms | ActiveRecord: 0.2ms | Allocations: 2848)
+
+
+Started GET "/style.css" for ::1 at 2023-06-13 17:24:29 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/style.css"):
+  
+Started GET "/bands/1" for ::1 at 2023-06-13 17:25:08 -0400
+Processing by BandsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBand Load (0.1ms)[0m  [1m[34mSELECT "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/bands_controller.rb:47:in `set_band'
+Redirected to http://localhost:3000/bands
+Filter chain halted as :set_band rendered or redirected
+Completed 302 Found in 6ms (ActiveRecord: 2.7ms | Allocations: 3856)
+
+
+Started GET "/bands" for ::1 at 2023-06-13 17:25:08 -0400
+Processing by BandsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering bands/index.html.erb within layouts/application
+  [1m[36mBand Load (0.1ms)[0m  [1m[34mSELECT "bands".* FROM "bands"[0m
+  ↳ app/views/bands/index.html.erb:2
+  Rendered bands/index.html.erb within layouts/application (Duration: 0.7ms | Allocations: 721)
+  Rendered layout layouts/application.html.erb (Duration: 1.8ms | Allocations: 2371)
+Completed 200 OK in 2ms (Views: 2.1ms | ActiveRecord: 0.1ms | Allocations: 2873)
+
+
+Started GET "/style.css" for ::1 at 2023-06-13 17:25:08 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/style.css"):
+  
+Started GET "/bands" for ::1 at 2023-06-13 17:26:06 -0400
+Processing by BandsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering bands/index.html.erb within layouts/application
+  [1m[36mBand Load (0.3ms)[0m  [1m[34mSELECT "bands".* FROM "bands"[0m
+  ↳ app/views/bands/index.html.erb:2
+  Rendered bands/index.html.erb within layouts/application (Duration: 2.7ms | Allocations: 846)
+  Rendered layout layouts/application.html.erb (Duration: 7.3ms | Allocations: 2804)
+Completed 200 OK in 11ms (Views: 10.5ms | ActiveRecord: 0.3ms | Allocations: 3593)
+
+
+Started GET "/style.css" for ::1 at 2023-06-13 17:26:06 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/style.css"):
+  
+Started GET "/bands" for ::1 at 2023-06-13 17:26:08 -0400
+Processing by BandsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering bands/index.html.erb within layouts/application
+  [1m[36mBand Load (0.3ms)[0m  [1m[34mSELECT "bands".* FROM "bands"[0m
+  ↳ app/views/bands/index.html.erb:2
+  Rendered bands/index.html.erb within layouts/application (Duration: 2.4ms | Allocations: 602)
+  Rendered layout layouts/application.html.erb (Duration: 6.3ms | Allocations: 1942)
+Completed 200 OK in 7ms (Views: 6.8ms | ActiveRecord: 0.3ms | Allocations: 2181)
+
+
+Started GET "/style.css" for ::1 at 2023-06-13 17:26:08 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/style.css"):
+  
+Started GET "/bands/1" for ::1 at 2023-06-13 17:27:03 -0400
+Processing by BandsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBand Load (0.2ms)[0m  [1m[34mSELECT "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/bands_controller.rb:47:in `set_band'
+Redirected to http://localhost:3000/bands
+Filter chain halted as :set_band rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms | Allocations: 670)
+
+
+Started GET "/bands" for ::1 at 2023-06-13 17:27:03 -0400
+Processing by BandsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering bands/index.html.erb within layouts/application
+  [1m[36mBand Load (0.5ms)[0m  [1m[34mSELECT "bands".* FROM "bands"[0m
+  ↳ app/views/bands/index.html.erb:2
+  Rendered bands/index.html.erb within layouts/application (Duration: 2.5ms | Allocations: 602)
+  Rendered layout layouts/application.html.erb (Duration: 6.0ms | Allocations: 1939)
+Completed 200 OK in 7ms (Views: 6.2ms | ActiveRecord: 0.5ms | Allocations: 2156)
+
+
+Started GET "/style.css" for ::1 at 2023-06-13 17:27:03 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/style.css"):
+  
+Started GET "/bands/1" for ::1 at 2023-06-13 17:27:54 -0400
+Processing by BandsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBand Load (0.1ms)[0m  [1m[34mSELECT "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/bands_controller.rb:47:in `set_band'
+  [1m[36mCACHE Band Load (0.0ms)[0m  [1m[34mSELECT "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/bands_controller.rb:47:in `set_band'
+  Rendering layout layouts/application.html.erb
+  Rendering bands/show.html.erb within layouts/application
+  Rendered bands/show.html.erb within layouts/application (Duration: 0.2ms | Allocations: 133)
+  Rendered layout layouts/application.html.erb (Duration: 1.2ms | Allocations: 1780)
+Completed 200 OK in 12ms (Views: 1.7ms | ActiveRecord: 4.7ms | Allocations: 6470)
+
+
+Started GET "/bands/style.css" for ::1 at 2023-06-13 17:27:54 -0400
+Processing by BandsController#show as CSS
+  Parameters: {"id"=>"style"}
+  [1m[36mBand Load (0.3ms)[0m  [1m[34mSELECT "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/bands_controller.rb:47:in `set_band'
+Completed 404 Not Found in 2ms (ActiveRecord: 0.3ms | Allocations: 1125)
+
+
+
+ActiveRecord::RecordNotFound - Couldn't find Band with 'id'=style:
+  app/controllers/bands_controller.rb:47:in `set_band'
+
+Started GET "/bands/1/edit" for ::1 at 2023-06-13 17:28:00 -0400
+Processing by BandsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBand Load (0.1ms)[0m  [1m[34mSELECT "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/bands_controller.rb:47:in `set_band'
+  Rendering layout layouts/application.html.erb
+  Rendering bands/edit.html.erb within layouts/application
+  Rendered bands/edit.html.erb within layouts/application (Duration: 2.0ms | Allocations: 535)
+  Rendered layout layouts/application.html.erb (Duration: 3.9ms | Allocations: 1540)
+Completed 200 OK in 6ms (Views: 4.8ms | ActiveRecord: 0.1ms | Allocations: 2307)
+
+
+Started GET "/bands/1/style.css" for ::1 at 2023-06-13 17:28:00 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/bands/1/style.css"):
+  
+Started PATCH "/bands/1" for ::1 at 2023-06-13 17:29:01 -0400
+Processing by BandsController#update as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "bands"=>{"name"=>"NelmaEdited"}, "id"=>"1"}
+  [1m[36mBand Load (0.3ms)[0m  [1m[34mSELECT "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/bands_controller.rb:47:in `set_band'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/bands_controller.rb:29:in `update'
+  [1m[36mBand Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "bands" WHERE "bands"."name" = $1 AND "bands"."id" != $2 LIMIT $3[0m  [["name", "NelmaEdited"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/bands_controller.rb:29:in `update'
+  [1m[36mBand Update (0.9ms)[0m  [1m[33mUPDATE "bands" SET "name" = $1, "updated_at" = $2 WHERE "bands"."id" = $3[0m  [["name", "NelmaEdited"], ["updated_at", "2023-06-13 21:29:01.570680"], ["id", 1]]
+  ↳ app/controllers/bands_controller.rb:29:in `update'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/bands_controller.rb:29:in `update'
+Redirected to http://localhost:3000/bands/1
+Completed 302 Found in 17ms (ActiveRecord: 2.8ms | Allocations: 4234)
+
+
+Started GET "/bands/1" for ::1 at 2023-06-13 17:29:01 -0400
+Processing by BandsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBand Load (0.3ms)[0m  [1m[34mSELECT "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/bands_controller.rb:47:in `set_band'
+  [1m[36mCACHE Band Load (0.0ms)[0m  [1m[34mSELECT "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/bands_controller.rb:47:in `set_band'
+  Rendering layout layouts/application.html.erb
+  Rendering bands/show.html.erb within layouts/application
+  Rendered bands/show.html.erb within layouts/application (Duration: 0.1ms | Allocations: 9)
+  Rendered layout layouts/application.html.erb (Duration: 4.3ms | Allocations: 1336)
+Completed 200 OK in 9ms (Views: 5.0ms | ActiveRecord: 0.3ms | Allocations: 2444)
+
+
+Started GET "/bands/style.css" for ::1 at 2023-06-13 17:29:01 -0400
+Processing by BandsController#show as CSS
+  Parameters: {"id"=>"style"}
+  [1m[36mBand Load (0.2ms)[0m  [1m[34mSELECT "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/bands_controller.rb:47:in `set_band'
+Completed 404 Not Found in 2ms (ActiveRecord: 0.2ms | Allocations: 1051)
+
+
+
+ActiveRecord::RecordNotFound - Couldn't find Band with 'id'=style:
+  app/controllers/bands_controller.rb:47:in `set_band'
+
+Started GET "/bands" for ::1 at 2023-06-13 17:29:09 -0400
+Processing by BandsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering bands/index.html.erb within layouts/application
+  [1m[36mBand Load (0.4ms)[0m  [1m[34mSELECT "bands".* FROM "bands"[0m
+  ↳ app/views/bands/index.html.erb:2
+  Rendered bands/index.html.erb within layouts/application (Duration: 2.0ms | Allocations: 623)
+  Rendered layout layouts/application.html.erb (Duration: 5.3ms | Allocations: 1990)
+Completed 200 OK in 6ms (Views: 5.8ms | ActiveRecord: 0.4ms | Allocations: 2210)
+
+
+Started GET "/style.css" for ::1 at 2023-06-13 17:29:09 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/style.css"):
+  
+Started GET "/bands" for ::1 at 2023-06-13 17:37:30 -0400
+Processing by BandsController#index as */*
+  Rendering layout layouts/application.html.erb
+  Rendering bands/index.html.erb within layouts/application
+  [1m[36mBand Load (0.4ms)[0m  [1m[34mSELECT "bands".* FROM "bands"[0m
+  ↳ app/views/bands/index.html.erb:2
+  Rendered bands/index.html.erb within layouts/application (Duration: 3.2ms | Allocations: 602)
+  Rendered layout layouts/application.html.erb (Duration: 10.5ms | Allocations: 1715)
+Completed 200 OK in 12ms (Views: 10.8ms | ActiveRecord: 0.4ms | Allocations: 1942)
+
+
+Started DELETE "/bands/2" for ::1 at 2023-06-13 17:37:55 -0400
+Processing by BandsController#destroy as */*
+  Parameters: {"id"=>"2"}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 2ms (ActiveRecord: 0.0ms | Allocations: 636)
+
+
+
+ActionController::InvalidAuthenticityToken - Can't verify CSRF token authenticity.:
+
+Started GET "/users/new" for ::1 at 2023-06-13 21:37:37 -0400
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 7.7ms | Allocations: 668)
+  Rendered layout layouts/application.html.erb (Duration: 10.2ms | Allocations: 1889)
+Completed 200 OK in 59ms (Views: 11.3ms | ActiveRecord: 18.4ms | Allocations: 7938)
+
+
+Started GET "/users/style.css" for ::1 at 2023-06-13 21:37:37 -0400
+Processing by UsersController#show as CSS
+  Parameters: {"id"=>"style"}
+Completed 406 Not Acceptable in 2ms (ActiveRecord: 0.0ms | Allocations: 762)
+
+
+
+ActionController::UnknownFormat - UsersController#show is missing a template for this request format and variant.
+request.formats: ["text/css"]
+request.variant: []:
+
+Started POST "/users" for ::1 at 2023-06-13 21:38:12 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"mounsseife@khalil.io", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:36:in `block in generate_unique_session_token'
+  [1m[36mUser Exists? (3.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:36:in `block in generate_unique_session_token'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "mounsseife@khalil.io"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:10:in `create'
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:10:in `create'
+  [1m[36mUser Create (2.9ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "mounsseife@khalil.io"], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"], ["created_at", "2023-06-14 01:38:12.851914"], ["updated_at", "2023-06-14 01:38:12.851914"]]
+  ↳ app/controllers/users_controller.rb:10:in `create'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:10:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 2.8ms | Allocations: 3452)
+  Rendered layout layouts/application.html.erb (Duration: 2.9ms | Allocations: 3544)
+Completed 500 Internal Server Error in 293ms (ActiveRecord: 8.7ms | Allocations: 8498)
+
+
+
+NoMethodError - undefined method `email' for nil:NilClass:
+  app/views/users/show.html.erb:1
+  app/controllers/users_controller.rb:11:in `create'
+
+Started POST "/__better_errors/74fc5fcb415a2b18/variables" for ::1 at 2023-06-13 21:38:12 -0400

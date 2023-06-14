@@ -1,0 +1,14 @@
+<form  action = "<%= bands_url %>" method = 'post'>
+ <input
+        type="hidden"
+        name="authenticity_token"
+        value="<%= form_authenticity_token %>">
+
+    <label> name
+        <input type= "text" name = 'bands[name]' value = <%= @band.name%> >
+    </label>
+
+
+    <input type= 'submit' value = "Add band">
+
+</form>
